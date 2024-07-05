@@ -1,0 +1,71 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\workshops\\BIM_Dev\\GradProject\\gb\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{262D5BCB-BAE5-4CC3-B9A6-A4780366CF9D}|gb\\gb.csproj|d:\\workshops\\bim_dev\\gradproject\\gb\\gb\\command\\roomcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{262D5BCB-BAE5-4CC3-B9A6-A4780366CF9D}|gb\\gb.csproj|solutionrelative:gb\\command\\roomcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{262D5BCB-BAE5-4CC3-B9A6-A4780366CF9D}|gb\\gb.csproj|d:\\workshops\\bim_dev\\gradproject\\gb\\gb\\model\\revithelper\\revitfiltercollectors.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{262D5BCB-BAE5-4CC3-B9A6-A4780366CF9D}|gb\\gb.csproj|solutionrelative:gb\\model\\revithelper\\revitfiltercollectors.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{262D5BCB-BAE5-4CC3-B9A6-A4780366CF9D}|gb\\gb.csproj|d:\\workshops\\bim_dev\\gradproject\\gb\\gb\\model\\creation\\elementcreation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{262D5BCB-BAE5-4CC3-B9A6-A4780366CF9D}|gb\\gb.csproj|solutionrelative:gb\\model\\creation\\elementcreation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "RevitFilterCollectors.cs",
+              "DocumentMoniker": "D:\\workshops\\BIM_Dev\\GradProject\\gb\\gb\\Model\\RevitHelper\\RevitFilterCollectors.cs",
+              "RelativeDocumentMoniker": "gb\\Model\\RevitHelper\\RevitFilterCollectors.cs",
+              "ToolTip": "D:\\workshops\\BIM_Dev\\GradProject\\gb\\gb\\Model\\RevitHelper\\RevitFilterCollectors.cs",
+              "RelativeToolTip": "gb\\Model\\RevitHelper\\RevitFilterCollectors.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAABAAAAAsAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-05T17:56:52.948Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ElementCreation.cs",
+              "DocumentMoniker": "D:\\workshops\\BIM_Dev\\GradProject\\gb\\gb\\Model\\Creation\\ElementCreation.cs",
+              "RelativeDocumentMoniker": "gb\\Model\\Creation\\ElementCreation.cs",
+              "ToolTip": "D:\\workshops\\BIM_Dev\\GradProject\\gb\\gb\\Model\\Creation\\ElementCreation.cs",
+              "RelativeToolTip": "gb\\Model\\Creation\\ElementCreation.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAAhAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-05T17:56:29.87Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "RoomCommand.cs",
+              "DocumentMoniker": "D:\\workshops\\BIM_Dev\\GradProject\\gb\\gb\\Command\\RoomCommand.cs",
+              "RelativeDocumentMoniker": "gb\\Command\\RoomCommand.cs",
+              "ToolTip": "D:\\workshops\\BIM_Dev\\GradProject\\gb\\gb\\Command\\RoomCommand.cs",
+              "RelativeToolTip": "gb\\Command\\RoomCommand.cs",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAABoAAAAlAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-02T20:31:23.179Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

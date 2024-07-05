@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<RevitAddIns>
+	
+	<AddIn Type="Command">
+		
+		<Name>BIM Helper</Name>
+		
+		<Assembly>gb.dll</Assembly>
+		
+		<AddInId>
+			FF9D3F49-089B-4B4F-B007-BEBCEC2EACFA
+		</AddInId>
+		
+		<VendorId>Abdelrhman Shawky Ahmed</VendorId>
+		
+		<VendorDescription>Leading Innovators in BIM Solutions</VendorDescription>
+		
+		<Description>A tool to enhance and automate BIM workflows.</Description>
+		
+		<LanguageType>CSHARP</LanguageType>
+		<TargetProduct>Revit</TargetProduct>
+		<TargetProductVersion>2024</TargetProductVersion>
+		<VisibilityMode>AlwaysVisible</VisibilityMode>
+		<VendorUrl>https://www.linkedin.com/in/abdelrhman-shawky-457712125/</VendorUrl>
+		<VendorEmail>abdelrhman.shawky156@gmail.com</VendorEmail>
+	</AddIn>
+</RevitAddIns>

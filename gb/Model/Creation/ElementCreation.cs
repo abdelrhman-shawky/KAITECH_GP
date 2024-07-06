@@ -17,31 +17,42 @@ namespace gb.Model.Creation
 
         RevitFilterCollectors _filterCollectors;
 
-
-       public ElementCreation(Document document, RevitFilterCollectors revitFilterCollectors)
+        /// <summary>
+        /// ElementCreation is a class that is conserned with creating geomtry eg. floors,walls,celing etc...
+        /// </summary>
+        /// <param document="room">The room from which to retrieve the boundary curves.</param>
+        /// <returns>ElementCreation instance.</returns>
+        public ElementCreation(Document document, RevitFilterCollectors revitFilterCollectors)
         {
             _document = document;
             _filterCollectors = revitFilterCollectors;
         }
 
         /// <summary>
-        /// Collects elements from the document based on the specified category and element type.
+        /// Retrieves the base boundary curves of a room.
         /// </summary>
-        /// <param room="Room">The built-in category to filter.</param>
-        /// <returns>List of CurveLoops.</returns>
+        /// <param name="room">The room from which to retrieve the boundary curves.</param>
+        /// <returns>A list of CurveLoop objects representing the room's boundary curves.</returns>
         private IList<CurveLoop> GetRoomBaseCurve(Room room)
         {
+            // Create a new SpatialElementBoundaryOptions object
             SpatialElementBoundaryOptions boundaryOptions = new SpatialElementBoundaryOptions();
 
+            // Get the boundary segments of the room based on the boundary options
             IList<IList<BoundarySegment>> boundarySegments = room.GetBoundarySegments(boundaryOptions);
 
-
+            // Initialize a list to hold the CurveLoop objects
             IList<CurveLoop> curves = new List<CurveLoop>();
+
+            // Iterate through each list of boundary segments
             foreach (IList<BoundarySegment> segmentList in boundarySegments)
             {
+                // Create a new CurveLoop for each set of boundary segments
                 CurveLoop curveLoop = new CurveLoop();
+
                 foreach (BoundarySegment segment in segmentList)
                 {
+                    // Get the curve from the boundary segment and append it to the CurveLoop
                     Curve curve = segment.GetCurve();
                     curveLoop.Append(curve);
                 }
@@ -52,33 +63,49 @@ namespace gb.Model.Creation
         }
 
 
-
+        /// <summary>
+        /// Creats floor from rooms base boundry curves.
+        /// </summary>
+        /// <param room="Room">The built-in category to filter.</param>
+        /// <returns>Floor floor.</returns>
         public Floor CreateRoomFloorFromParam(Room room)
         {
+            // Retrieve the base boundary curves of the room
             IList<CurveLoop> curves =GetRoomBaseCurve(room);
 
-           Parameter floorTypeParam = room.LookupParameter("Floor Finish");
+            // Lookup the "Floor Finish" parameter in the room
+            Parameter floorTypeParam = room.LookupParameter("Floor Finish");
 
-            
+            var a = floorTypeParam.AsValueString();
+            // check if the floor finis is null or not spicefied
+            if (floorTypeParam.AsValueString()== null)
+            {
+                return null;
+            }
+
+            // Collect all floor elements
             IList<Element> FloorElment = _filterCollectors.CollectFloorsElements(true);
 
-            Element specificFloorType= FloorElment.FirstOrDefault(e => e.Name ==floorTypeParam.AsValueString());
 
-            var a =  floorTypeParam.Id;
+            // Find the specific floor type based on the parameter's value string
+            Element specificFloorType = FloorElment.FirstOrDefault(e => e.Name ==floorTypeParam.AsValueString());
 
+
+
+            // Start a transaction to create the floor
             using (Transaction transaction = new Transaction(_document, "Create Floor"))
             {
                 transaction.Start();
 
-               Floor myFloor= Floor.Create(_document, curves, specificFloorType.Id, room.LevelId);
-               
+                // Create the floor using the specified floor type and room level
+                Floor myFloor = Floor.Create(_document, curves, specificFloorType.Id, room.LevelId);
+
+                // Commit the transaction
                 transaction.Commit();
+
+                // Return the created floor
                 return myFloor;
-            }
-
-            
+            }            
         }
-
-
     }
 }

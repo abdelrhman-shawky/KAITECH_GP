@@ -46,9 +46,11 @@ namespace gb.Model.RevitHelper
         /// <returns>List of walls.</returns>
         public IList<Element> CollectWallsElements(bool elementType)
         {
+            
             return CollectElements(BuiltInCategory.OST_Walls, elementType);
         }
 
+        
 
         /// <summary>
         /// Collects walls Ids from the document.

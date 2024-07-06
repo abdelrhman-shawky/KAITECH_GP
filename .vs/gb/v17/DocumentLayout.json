@@ -3,12 +3,16 @@
   "WorkspaceRootPath": "D:\\workshops\\BIM_Dev\\KAITECH_GP\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{262D5BCB-BAE5-4CC3-B9A6-A4780366CF9D}|gb\\gb.csproj|D:\\workshops\\BIM_Dev\\KAITECH_GP\\gb\\model\\creation\\elementcreation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{262D5BCB-BAE5-4CC3-B9A6-A4780366CF9D}|gb\\gb.csproj|d:\\workshops\\bim_dev\\kaitech_gp\\gb\\model\\creation\\elementcreation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{262D5BCB-BAE5-4CC3-B9A6-A4780366CF9D}|gb\\gb.csproj|solutionrelative:gb\\model\\creation\\elementcreation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{262D5BCB-BAE5-4CC3-B9A6-A4780366CF9D}|gb\\gb.csproj|d:\\workshops\\bim_dev\\kaitech_gp\\gb\\command\\roomcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{262D5BCB-BAE5-4CC3-B9A6-A4780366CF9D}|gb\\gb.csproj|D:\\workshops\\BIM_Dev\\KAITECH_GP\\gb\\command\\roomcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{262D5BCB-BAE5-4CC3-B9A6-A4780366CF9D}|gb\\gb.csproj|solutionrelative:gb\\command\\roomcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{262D5BCB-BAE5-4CC3-B9A6-A4780366CF9D}|gb\\gb.csproj|d:\\workshops\\bim_dev\\kaitech_gp\\gb\\model\\revithelper\\revitfiltercollectors.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{262D5BCB-BAE5-4CC3-B9A6-A4780366CF9D}|gb\\gb.csproj|solutionrelative:gb\\model\\revithelper\\revitfiltercollectors.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -21,8 +25,17 @@
           "SelectedChildIndex": 1,
           "Children": [
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "RevitFilterCollectors.cs",
+              "DocumentMoniker": "D:\\workshops\\BIM_Dev\\KAITECH_GP\\gb\\Model\\RevitHelper\\RevitFilterCollectors.cs",
+              "RelativeDocumentMoniker": "gb\\Model\\RevitHelper\\RevitFilterCollectors.cs",
+              "ToolTip": "D:\\workshops\\BIM_Dev\\KAITECH_GP\\gb\\Model\\RevitHelper\\RevitFilterCollectors.cs",
+              "RelativeToolTip": "gb\\Model\\RevitHelper\\RevitFilterCollectors.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAADQAAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-06T14:04:04.409Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -32,7 +45,7 @@
               "RelativeDocumentMoniker": "gb\\Model\\Creation\\ElementCreation.cs",
               "ToolTip": "D:\\workshops\\BIM_Dev\\KAITECH_GP\\gb\\Model\\Creation\\ElementCreation.cs",
               "RelativeToolTip": "gb\\Model\\Creation\\ElementCreation.cs",
-              "ViewState": "AQIAAAwAAAAAAAAAAAAhwFMAAAABAAAA",
+              "ViewState": "AQIAAEEAAAAAAAAAAIAwwFwAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-07-05T17:56:29.87Z",
               "EditorCaption": ""
@@ -45,7 +58,7 @@
               "RelativeDocumentMoniker": "gb\\Command\\RoomCommand.cs",
               "ToolTip": "D:\\workshops\\BIM_Dev\\KAITECH_GP\\gb\\Command\\RoomCommand.cs",
               "RelativeToolTip": "gb\\Command\\RoomCommand.cs",
-              "ViewState": "AQIAAAwAAAAAAAAAAAAAABoAAABMAAAA",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAwwB0AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-07-02T20:31:23.179Z",
               "EditorCaption": ""

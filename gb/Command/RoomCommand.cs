@@ -30,7 +30,11 @@ namespace gb
 
             ElementCreation elementCreation =new ElementCreation(document,revitFilterCollectors);
 
-            elementCreation.CreateRoomFloorFromParam(rooms[1]);
+            foreach (Room room in rooms)
+            {
+                elementCreation.CreateRoomFloorFromParam(room);
+            }
+           
             return Result.Succeeded;
         }
     }

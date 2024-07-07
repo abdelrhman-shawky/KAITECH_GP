@@ -3,12 +3,24 @@
   "WorkspaceRootPath": "C:\\Users\\eng1\\Desktop\\Revit2024_Addon\\KAITECH_GP\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{262D5BCB-BAE5-4CC3-B9A6-A4780366CF9D}|gb\\gb.csproj|c:\\users\\eng1\\desktop\\revit2024_addon\\kaitech_gp\\gb\\model\\creation\\elementcreation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{262D5BCB-BAE5-4CC3-B9A6-A4780366CF9D}|gb\\gb.csproj|solutionrelative:gb\\model\\creation\\elementcreation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{262D5BCB-BAE5-4CC3-B9A6-A4780366CF9D}|gb\\gb.csproj|c:\\users\\eng1\\desktop\\revit2024_addon\\kaitech_gp\\gb\\view\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{262D5BCB-BAE5-4CC3-B9A6-A4780366CF9D}|gb\\gb.csproj|solutionrelative:gb\\view\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{262D5BCB-BAE5-4CC3-B9A6-A4780366CF9D}|gb\\gb.csproj|c:\\users\\eng1\\desktop\\revit2024_addon\\kaitech_gp\\gb\\command\\roomcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{262D5BCB-BAE5-4CC3-B9A6-A4780366CF9D}|gb\\gb.csproj|C:\\Users\\eng1\\Desktop\\Revit2024_Addon\\KAITECH_GP\\gb\\command\\roomcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{262D5BCB-BAE5-4CC3-B9A6-A4780366CF9D}|gb\\gb.csproj|solutionrelative:gb\\command\\roomcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{262D5BCB-BAE5-4CC3-B9A6-A4780366CF9D}|gb\\gb.csproj|c:\\users\\eng1\\desktop\\revit2024_addon\\kaitech_gp\\gb\\model\\transactionmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{262D5BCB-BAE5-4CC3-B9A6-A4780366CF9D}|gb\\gb.csproj|solutionrelative:gb\\model\\transactionmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{262D5BCB-BAE5-4CC3-B9A6-A4780366CF9D}|gb\\gb.csproj|c:\\users\\eng1\\desktop\\revit2024_addon\\kaitech_gp\\gb\\viewmodel\\mainviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{262D5BCB-BAE5-4CC3-B9A6-A4780366CF9D}|gb\\gb.csproj|solutionrelative:gb\\viewmodel\\mainviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{262D5BCB-BAE5-4CC3-B9A6-A4780366CF9D}|gb\\gb.csproj|c:\\users\\eng1\\desktop\\revit2024_addon\\kaitech_gp\\gb\\viewmodel\\createfloorhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{262D5BCB-BAE5-4CC3-B9A6-A4780366CF9D}|gb\\gb.csproj|solutionrelative:gb\\viewmodel\\createfloorhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -17,20 +29,45 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 200,
+          "DockedWidth": 147,
           "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "ElementCreation.cs",
-              "DocumentMoniker": "C:\\Users\\eng1\\Desktop\\Revit2024_Addon\\KAITECH_GP\\gb\\Model\\Creation\\ElementCreation.cs",
-              "RelativeDocumentMoniker": "gb\\Model\\Creation\\ElementCreation.cs",
-              "ToolTip": "C:\\Users\\eng1\\Desktop\\Revit2024_Addon\\KAITECH_GP\\gb\\Model\\Creation\\ElementCreation.cs",
-              "RelativeToolTip": "gb\\Model\\Creation\\ElementCreation.cs",
-              "ViewState": "AQIAABoAAAAAAAAAAAAgwFMAAAAAAAAA",
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\eng1\\Desktop\\Revit2024_Addon\\KAITECH_GP\\gb\\View\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "gb\\View\\MainWindow.xaml",
+              "ToolTip": "C:\\Users\\eng1\\Desktop\\Revit2024_Addon\\KAITECH_GP\\gb\\View\\MainWindow.xaml",
+              "RelativeToolTip": "gb\\View\\MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-07-07T13:42:00.809Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "TransactionManager.cs",
+              "DocumentMoniker": "C:\\Users\\eng1\\Desktop\\Revit2024_Addon\\KAITECH_GP\\gb\\Model\\TransactionManager.cs",
+              "RelativeDocumentMoniker": "gb\\Model\\TransactionManager.cs",
+              "ToolTip": "C:\\Users\\eng1\\Desktop\\Revit2024_Addon\\KAITECH_GP\\gb\\Model\\TransactionManager.cs",
+              "RelativeToolTip": "gb\\Model\\TransactionManager.cs",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAABoAAAAgAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-07T08:48:44.957Z",
+              "WhenOpened": "2024-07-07T12:31:01.204Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "MainViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\eng1\\Desktop\\Revit2024_Addon\\KAITECH_GP\\gb\\ViewModel\\MainViewModel.cs",
+              "RelativeDocumentMoniker": "gb\\ViewModel\\MainViewModel.cs",
+              "ToolTip": "C:\\Users\\eng1\\Desktop\\Revit2024_Addon\\KAITECH_GP\\gb\\ViewModel\\MainViewModel.cs",
+              "RelativeToolTip": "gb\\ViewModel\\MainViewModel.cs",
+              "ViewState": "AQIAAC4AAAAAAAAAAAAwwDkAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-07T11:03:30.872Z",
               "EditorCaption": ""
             },
             {
@@ -41,9 +78,22 @@
               "RelativeDocumentMoniker": "gb\\Command\\RoomCommand.cs",
               "ToolTip": "C:\\Users\\eng1\\Desktop\\Revit2024_Addon\\KAITECH_GP\\gb\\Command\\RoomCommand.cs",
               "RelativeToolTip": "gb\\Command\\RoomCommand.cs",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAAABgAAAAhAAAA",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAABkAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-07-07T08:29:29.423Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "CreateFloorHandler.cs",
+              "DocumentMoniker": "C:\\Users\\eng1\\Desktop\\Revit2024_Addon\\KAITECH_GP\\gb\\ViewModel\\CreateFloorHandler.cs",
+              "RelativeDocumentMoniker": "gb\\ViewModel\\CreateFloorHandler.cs",
+              "ToolTip": "C:\\Users\\eng1\\Desktop\\Revit2024_Addon\\KAITECH_GP\\gb\\ViewModel\\CreateFloorHandler.cs",
+              "RelativeToolTip": "gb\\ViewModel\\CreateFloorHandler.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-07T09:10:24.906Z",
               "EditorCaption": ""
             }
           ]

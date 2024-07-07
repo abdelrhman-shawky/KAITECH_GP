@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Autodesk.Revit.DB;
+using Autodesk.Revit.UI;
+using gb.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,11 +21,28 @@ namespace gb.View
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : UserControl
+    public partial class MainWindow : Window
     {
-        public MainWindow()
+        public UIDocument uiDoc { get; }
+
+        public Document document { get; }
+
+        public MainWindow(UIDocument uIDocument)
         {
+            uiDoc = uIDocument;
+
+            document= uiDoc.Document;
             InitializeComponent();
+            
         }
+
+        private void FinishRoomsFloorsButton_Click(object sender, RoutedEventArgs e)
+        {
+            
+            MainViewModel mainViewModel = new MainViewModel();
+
+        }
+
     }
+
 }

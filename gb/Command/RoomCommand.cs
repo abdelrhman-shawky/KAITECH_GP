@@ -21,25 +21,25 @@ namespace gb
             Document document = uIDocument.Document;
 
 
-            MainWindow mainWindow = new View.MainWindow();
-            //mainWindow.show();
+            MainWindow mainWindow = new MainWindow(uIDocument);
+            mainWindow.ShowDialog();
 
-            RevitFilterCollectors revitFilterCollectors = new RevitFilterCollectors(document);
+            //RevitFilterCollectors revitFilterCollectors = new RevitFilterCollectors(document);
 
 
-            IList<Room> rooms = revitFilterCollectors.CollectRooms();
-            if (rooms.Count == 0)
-            {
-                TaskDialog.Show("Error", "No rooms found in the document.");
-                return Result.Failed;
-            }
+            //IList<Room> rooms = revitFilterCollectors.CollectRooms();
+            //if (rooms.Count == 0)
+            //{
+            //    TaskDialog.Show("Error", "No rooms found in the document.");
+            //    return Result.Failed;
+            //}
 
-            ElementCreation elementCreation =new ElementCreation(document,revitFilterCollectors);
+            //ElementCreation elementCreation =new ElementCreation(document,revitFilterCollectors);
 
-            foreach (Room room in rooms)
-            {
-                elementCreation.CreateRoomFloorFromParam(room);
-            }
+            //foreach (Room room in rooms)
+            //{
+            //    elementCreation.CreateRoomFloorFromParam(room);
+            //}
            
             return Result.Succeeded;
         }

@@ -75,8 +75,7 @@ namespace gb.Model.Creation
 
             // Lookup the "Floor Finish" parameter in the room
             Parameter floorTypeParam = room.LookupParameter("Floor Finish");
-
-            var a = floorTypeParam.AsValueString();
+           
             // check if the floor finis is null or not spicefied
             if (floorTypeParam.AsValueString()== null)
             {
@@ -105,7 +104,9 @@ namespace gb.Model.Creation
 
                 // Return the created floor
                 return myFloor;
-            }            
+            }      
+            
+
         }
     }
 }

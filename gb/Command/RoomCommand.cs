@@ -8,6 +8,7 @@ using Autodesk.Revit.DB.Visual;
 using Autodesk.Revit.UI;
 using gb.Model.Creation;
 using gb.Model.RevitHelper;
+using gb.View;
 
 namespace gb
 {
@@ -18,6 +19,11 @@ namespace gb
         {
             UIDocument uIDocument = commandData.Application.ActiveUIDocument;
             Document document = uIDocument.Document;
+
+
+            MainWindow mainWindow = new View.MainWindow();
+            //mainWindow.show();
+
             RevitFilterCollectors revitFilterCollectors = new RevitFilterCollectors(document);
 
 

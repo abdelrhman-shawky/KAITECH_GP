@@ -60,14 +60,9 @@ namespace gb.Model.RevitHelper
         public IList<ElementId> CollectWallsIds(bool elementType)
         {
 
-           IList<ElementId> ids = new List<ElementId>();
-
-            foreach (Element element in CollectWallsElements(elementType))
-            {
-                ids.Add(element.Id);
-            }
-
-            return ids;
+            return CollectWallsElements(elementType)
+                .Cast<ElementId>()
+                .ToList();
         }
 
 
@@ -78,15 +73,11 @@ namespace gb.Model.RevitHelper
         /// <returns>List of walls.</returns>
         public IList<Wall> CollectWalls(bool elementType)
         {
-            IList<Wall> Walls = new List<Wall>();
 
-            foreach(ElementId wallId in CollectWallsIds(elementType))
-            {
+            return CollectWallsIds(elementType)
+                .Cast<Wall>()
+                .ToList();
 
-                Walls.Add(_document.GetElement(wallId)as Wall);
-            }
-
-            return Walls;
         }
 
         //----------------------------------Floors--------------------------------------//
@@ -110,12 +101,16 @@ namespace gb.Model.RevitHelper
         {
             IList<ElementId> ids = new List<ElementId>();
 
-            foreach (Element element in CollectFloorsElements(elementType))
-            {
-                ids.Add(element.Id);
-            }
+            return CollectFloorsElements(elementType)
+                .Cast<ElementId>()
+                .ToList();
+                
+            //foreach (Element element in CollectFloorsElements(elementType))
+            //{
+            //    ids.Add(element.Id);
+            //}
 
-            return ids;
+            //return ids;
         }
 
         /// <summary>

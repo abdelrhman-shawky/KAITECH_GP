@@ -22,7 +22,8 @@ namespace gb
 
 
             MainWindow mainWindow = new MainWindow(uIDocument);
-            mainWindow.ShowDialog();
+            mainWindow.Show();
+
 
             //RevitFilterCollectors revitFilterCollectors = new RevitFilterCollectors(document);
 

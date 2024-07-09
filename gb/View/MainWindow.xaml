@@ -7,7 +7,8 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
              Title="Finish Rooms Floors" Height="450" Width="800"
-             Background="#2C3E50">
+             Background="#2C3E50"
+             Topmost="True" ResizeMode="NoResize" >
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -24,7 +25,9 @@
             <!-- Finish Rooms Floors Button -->
             <Button Content="Finish Rooms Floors" Width="200" Height="50" FontSize="16" FontWeight="Bold" 
                     Background="#1ABC9C" Foreground="White" BorderThickness="0"
-                    Cursor="Hand" Padding="10,5" Click="FinishRoomsFloorsButton_Click">
+                    Cursor="Hand" Padding="10,5" Click="FinishRoomsFloorsButton_Click"
+                    Command="{Binding CreateFloorCommand}"
+                    CommandParameter="{Binding}">
                 <Button.Template>
                     <ControlTemplate TargetType="Button">
                         <Border Background="{TemplateBinding Background}" CornerRadius="25" 

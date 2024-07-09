@@ -11,29 +11,41 @@ using Autodesk.Revit.UI;
 
 namespace gb.Model
 {
+    /// <summary>
+    /// Manages transactions for creating floors in a Revit document.
+    /// </summary>
     public class TransactionManager
     {
         private readonly Document _document;
 
 
-
+        /// <summary>
+        /// Initializes a new instance of the TransactionManager class with the specified Revit document.
+        /// </summary>
+        /// <param name="document">The Revit document to perform operations on.</param>
         public TransactionManager(Document document)
         {
         _document = document; 
 
         }
 
-
+        /// <summary>
+        /// Collects rooms in the document and creates floors for each room.
+        /// </summary>
         public void CreatFloor()
         {
+            // Collect rooms using RevitFilterCollectors helper class
             RevitFilterCollectors revitFilterCollectors = new RevitFilterCollectors(_document);
 
             IList<Room> rooms = revitFilterCollectors.CollectRooms();
 
+            // Check if there are rooms in the document
             if (rooms.Count != 0)
             {
+                // Initialize ElementCreation class to create floors
                 ElementCreation elementCreation = new ElementCreation(_document, revitFilterCollectors);
 
+                // Create floors for each room
                 foreach (Room room in rooms)
                 {
                     elementCreation.CreateRoomFloorFromParam(room);
@@ -41,6 +53,7 @@ namespace gb.Model
 
             }
             else {
+                // Show error message if no rooms are found
                 TaskDialog.Show("Error", "No rooms found in the document.");
             }
 

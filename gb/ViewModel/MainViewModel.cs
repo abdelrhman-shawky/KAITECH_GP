@@ -10,14 +10,23 @@ using System.Windows.Input;
 
 namespace gb.Model
 {
+
+    /// <summary>
+    /// View model class that facilitates user interactions and commands for floor creation in Revit.
+    /// Implements INotifyPropertyChanged to notify UI of property changes.
+    /// </summary>
     public class MainViewModel : INotifyPropertyChanged
     {
 
-        private ExternalEvent createFloorEvent;
+        private readonly ExternalEvent createFloorEvent;
 
-        private CreateFloorHandler createFloorHandler;
+        private readonly CreateFloorHandler createFloorHandler;
 
 
+        /// <summary>
+        /// Initializes a new instance of the MainViewModel class.
+        /// Sets up command bindings and event handlers for floor creation.
+        /// </summary>
         public MainViewModel()
         {
 
@@ -27,28 +36,37 @@ namespace gb.Model
             createFloorEvent = ExternalEvent.Create(createFloorHandler);
 
             //create a RelayCommand for the CreateFloorCommand
-            CreateFloorCommand = new RelayCommand(CreatFloor);
+            CreateFloorCommand = new RelayCommand(CreateFloor);
 
         }
 
 
-        //ICommand property bound to a UI element (e.g., button)
+        /// <summary>
+        /// ICommand property bound to a UI element (e.g., button) to create floors.
+        /// </summary>
         public ICommand CreateFloorCommand { get; }
 
 
-        // Method that gets called when the CreateFloorCommand is executed
-        private void CreatFloor()
+        /// <summary>
+        /// Method called when the CreateFloorCommand is executed.
+        /// Raises the ExternalEvent to execute the CreateFloorHandler.
+        /// </summary>
+        private void CreateFloor()
         {
             // Raise the ExternalEvent to execute the CreateFloorHandler
 
             createFloorEvent.Raise();
         }
 
-
-        // Implementation of INotifyPropertyChanged for property change notifications
-
+        /// <summary>
+        /// Implementation of INotifyPropertyChanged for property change notifications.
+        /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
 
+        /// <summary>
+        /// Helper method to invoke property change events.
+        /// </summary>
+        /// <param name="propertyName">The name of the property that changed.</param>
         protected void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
@@ -57,26 +75,43 @@ namespace gb.Model
     }
 
 
-    // RelayCommand class that implements ICommand for command handling
+    /// <summary>
+    /// Implements the ICommand interface to provide command execution logic for UI elements.
+    /// </summary>
     public class RelayCommand : ICommand
     {
         private readonly Action execute;
         private readonly Func<bool> canExecute;
 
-        // Constructor to initialize the RelayCommand with execute and canExecute delegates
+
+        /// <summary>
+        /// Initializes a new instance of the RelayCommand class with the specified execute and canExecute delegates.
+        /// </summary>
+        /// <param name="execute">The action delegate to execute the command logic.</param>
+        /// <param name="canExecute">The function delegate to determine if the command can execute.</param>
         public RelayCommand(Action execute, Func<bool> canExecute = null)
         {
             this.execute = execute; // Action delegate to execute the command logic
             this.canExecute = canExecute; // Func<bool> delegate to determine if the command can execute
         }
 
-        // ICommand method to determine if the command can execute
+
+        /// <summary>
+        /// Determines if the command can execute.
+        /// </summary>
+        /// <param name="parameter">Command parameter (not used in this implementation).</param>
+        /// <returns>True if the command can execute, false otherwise.</returns>
         public bool CanExecute(object parameter) => canExecute == null || canExecute();
 
-        // ICommand method to execute the command logic
+        /// <summary>
+        /// Executes the command logic.
+        /// </summary>
+        /// <param name="parameter">Command parameter (not used in this implementation).</param>
         public void Execute(object parameter) => execute();
 
-        // ICommand event to notify changes in the command's ability to execute
+        /// <summary>
+        /// Event that notifies changes in the command's ability to execute.
+        /// </summary>
         public event EventHandler CanExecuteChanged
         {
             add { CommandManager.RequerySuggested += value; } // Subscribe to CommandManager's RequerySuggested event

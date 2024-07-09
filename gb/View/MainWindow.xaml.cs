@@ -18,28 +18,49 @@ using System.Windows.Shapes;
 
 namespace gb.View
 {
+
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
         public UIDocument uiDoc { get; }
-
         public Document document { get; }
+        public MainViewModel MainViewModel { get; }
 
+        /// <summary>
+        /// Initializes a new instance of the MainWindow class with the provided UIDocument.
+        /// Sets up the UI and initializes MainViewModel as the DataContext.
+        /// </summary>
+        /// <param name="uIDocument">The UIDocument instance representing the active Revit document.</param>
         public MainWindow(UIDocument uIDocument)
         {
             uiDoc = uIDocument;
 
             document= uiDoc.Document;
             InitializeComponent();
-            
+
+            // Initialize the MainViewModel and set it as the DataContext for data binding
+            MainViewModel = new MainViewModel();
+            DataContext = MainViewModel;
+
         }
 
+
+        /// <summary>
+        /// Event handler for the FinishRoomsFloorsButton Click event.
+        /// Executes the CreateFloorCommand defined in MainViewModel when the button is clicked.
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">Event arguments.</param>
         private void FinishRoomsFloorsButton_Click(object sender, RoutedEventArgs e)
         {
-            
-            MainViewModel mainViewModel = new MainViewModel();
+
+            // Execute the command when the button is clicked
+            if (MainViewModel.CreateFloorCommand.CanExecute(null))
+            {
+                MainViewModel.CreateFloorCommand.Execute(null);
+            }
 
         }
 

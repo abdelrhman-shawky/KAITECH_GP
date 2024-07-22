@@ -108,5 +108,43 @@ namespace gb.Model.Creation
             
 
         }
+
+
+        public Ceiling createRoomCelinginFromParam(Room room)
+        {
+
+            IList<CurveLoop> curves = GetRoomBaseCurve(room);
+
+
+            Parameter ceilingTypeParam = room.LookupParameter("Ceiling Finish");
+
+            if (ceilingTypeParam.AsValueString() == null)
+            {
+                return null;
+            }
+
+            IList<Element> ceilingElment = _filterCollectors.collectCeilingElements(true);
+
+
+            Element specificCeilingType = ceilingElment.FirstOrDefault(e => e.Name == ceilingTypeParam.AsValueString());
+
+
+            using (Transaction transaction = new Transaction(_document, "Create ceiling"))
+            {
+                transaction.Start();
+
+                // Create the floor using the specified floor type and room level
+                Ceiling myCeiling = Ceiling.Create(_document, curves, specificCeilingType.Id, room.LevelId);
+
+                // Commit the transaction
+                transaction.Commit();
+
+                // Return the created floor
+                return myCeiling;
+            }
+
+        }
+
+
     }
 }

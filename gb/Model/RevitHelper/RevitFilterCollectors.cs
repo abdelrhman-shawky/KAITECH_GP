@@ -1,6 +1,7 @@
 ﻿using Autodesk.Revit.DB;
 using Autodesk.Revit.DB.Architecture;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Data.Common;
@@ -204,6 +205,43 @@ namespace gb.Model.RevitHelper
 
             return rooms;
         }
+
+
+
+        //----------------------------------Ceiling--------------------------------------//
+
+
+        public IList<Element> collectCeilingElements(bool elementType)
+        {
+            return CollectElements(BuiltInCategory.OST_Ceilings, elementType);
+
+        }
+
+        public IList<ElementId> collectCeilingElementIds(bool elementType)
+        {
+            IList<ElementId> ids = new List<ElementId>();
+
+            foreach (Element element in collectCeilingElements(elementType))
+            {
+                ids.Add(element.Id);
+            }
+
+            return ids;
+        }
+
+
+        public IList<Ceiling> collectCeiling(bool elementType)
+        {
+            IList<Ceiling> ceilings = new List<Ceiling>();
+
+            foreach (ElementId ceilingId in CollectFloorsIds(elementType))
+            {
+                ceilings.Add(_document.GetElement(ceilingId) as Ceiling);
+            }
+
+            return ceilings;
+        }
+
 
     }
 }

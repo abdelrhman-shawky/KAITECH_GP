@@ -32,7 +32,7 @@ namespace gb.Model
         /// <summary>
         /// Collects rooms in the document and creates floors for each room.
         /// </summary>
-        public void CreatFloor()
+        public void CreateFloor()
         {
             // Collect rooms using RevitFilterCollectors helper class
             RevitFilterCollectors revitFilterCollectors = new RevitFilterCollectors(_document);
@@ -57,6 +57,31 @@ namespace gb.Model
                 TaskDialog.Show("Error", "No rooms found in the document.");
             }
 
+        }
+
+        public void CreateCeiling()
+        {
+            RevitFilterCollectors revitFilterCollectors = new RevitFilterCollectors(_document);
+
+            IList<Room> rooms = revitFilterCollectors.CollectRooms();
+
+            if (rooms.Count != 0)
+            {
+                // Initialize ElementCreation class to create floors
+                ElementCreation elementCreation = new ElementCreation(_document, revitFilterCollectors);
+
+                // Create floors for each room
+                foreach (Room room in rooms)
+                {
+                    elementCreation.createRoomCelinginFromParam(room);
+                }
+
+            }
+            else
+            {
+                // Show error message if no rooms are found
+                TaskDialog.Show("Error", "No rooms found in the document.");
+            }
         }
     }
     

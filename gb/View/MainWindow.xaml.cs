@@ -64,6 +64,14 @@ namespace gb.View
 
         }
 
+
+        private void FinishRoomsCeilingButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (MainViewModel.CreateCeilingCommand.CanExecute(null))
+            {
+                MainViewModel.CreateCeilingCommand.Execute(null);
+            }
+        }
     }
 
 }

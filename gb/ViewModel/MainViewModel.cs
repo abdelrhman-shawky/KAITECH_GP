@@ -1,5 +1,7 @@
 ﻿using Autodesk.Revit.Creation;
+using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
+using gb.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,8 +21,10 @@ namespace gb.Model
     {
 
         private readonly ExternalEvent createFloorEvent;
-
         private readonly CreateFloorHandler createFloorHandler;
+
+        private readonly ExternalEvent createCeilingEvent;
+        private readonly CreateCeilingHandler createCeilingHandler;
 
 
         /// <summary>
@@ -32,11 +36,16 @@ namespace gb.Model
 
             //Initialize the createFloorHandler and create an ExternalEvent for it 
             createFloorHandler = new CreateFloorHandler();
-
             createFloorEvent = ExternalEvent.Create(createFloorHandler);
+
+            createCeilingHandler = new CreateCeilingHandler();
+            createCeilingEvent = ExternalEvent.Create(createCeilingHandler);
 
             //create a RelayCommand for the CreateFloorCommand
             CreateFloorCommand = new RelayCommand(CreateFloor);
+
+            CreateCeilingCommand = new RelayCommand(CreateCeiling);
+
 
         }
 
@@ -46,6 +55,7 @@ namespace gb.Model
         /// </summary>
         public ICommand CreateFloorCommand { get; }
 
+        public ICommand CreateCeilingCommand { get; }
 
         /// <summary>
         /// Method called when the CreateFloorCommand is executed.
@@ -57,6 +67,13 @@ namespace gb.Model
 
             createFloorEvent.Raise();
         }
+
+
+        private void CreateCeiling()
+        {
+            createCeilingEvent.Raise();
+        }
+
 
         /// <summary>
         /// Implementation of INotifyPropertyChanged for property change notifications.

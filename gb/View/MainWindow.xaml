@@ -1,4 +1,5 @@
 ﻿<Window x:Class="gb.View.MainWindow"
+<<<<<<< Updated upstream
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -9,15 +10,32 @@
              Title="Finish Rooms Floors" Height="450" Width="800"
              Background="#2C3E50">
 
+=======
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+        mc:Ignorable="d" 
+        Title="Design Tools" Height="500" Width="900"
+        Background="#2C3E50"
+        Topmost="True" ResizeMode="NoResize">
+>>>>>>> Stashed changes
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="731*"/>
-            <ColumnDefinition Width="69*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="300"/>
         </Grid.ColumnDefinitions>
-        <!-- Background Circle -->
-        <Ellipse Fill="#34495E" Width="400" Height="400" VerticalAlignment="Center" HorizontalAlignment="Left" Opacity="0.2" Margin="200,0,0,0"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <TextBlock Grid.Row="0" Grid.ColumnSpan="2" Text="Room Mangment Tools" FontSize="30" FontWeight="Bold" Foreground="#ECF0F1" 
+                   HorizontalAlignment="Center" Margin="20"/>
 
         <!-- Main Content -->
+<<<<<<< Updated upstream
         <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center" Margin="260,0,0,0">
             <TextBlock Text="Finish Rooms Floors" FontSize="30" FontWeight="Bold" Foreground="#ECF0F1" Margin="0,0,0,20" HorizontalAlignment="Center"/>
 
@@ -29,12 +47,29 @@
                     <ControlTemplate TargetType="Button">
                         <Border Background="{TemplateBinding Background}" CornerRadius="25" 
                                 BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+=======
+        <StackPanel Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20">
+            <!-- Place Floors Button -->
+            <Button Content="Place Floors" Width="200" Height="40" FontSize="16" FontWeight="Bold" 
+            Background="#1ABC9C" Foreground="White" BorderThickness="0"
+            Cursor="Hand" Padding="10,5" Command="{Binding CreateFloorCommand}" Margin="0,0,0,10">
+                <Button.Template>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="20" 
+                        BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                            <Border.RenderTransform>
+                                <ScaleTransform ScaleX="1" ScaleY="1"/>
+                            </Border.RenderTransform>
+>>>>>>> Stashed changes
                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Border>
                     </ControlTemplate>
                 </Button.Template>
                 <Button.Style>
+<<<<<<< Updated upstream
                     <Style TargetType="Button">
+=======
+                    <Style TargetType="{x:Type Button}">
                         <Setter Property="Background" Value="#1ABC9C"/>
                         <Setter Property="Foreground" Value="White"/>
                         <Setter Property="BorderBrush" Value="Transparent"/>
@@ -49,7 +84,30 @@
                         <Setter Property="FontWeight" Value="Bold"/>
                         <Style.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="#16A085"/>
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation To="#16A085" Duration="0:0:0.3" 
+                                        Storyboard.TargetProperty="(Control.Background).(SolidColorBrush.Color)"/>
+                                            <DoubleAnimation To="1.1" Duration="0:0:0.3"
+                                         Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)"/>
+                                            <DoubleAnimation To="1.1" Duration="0:0:0.3"
+                                         Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.EnterActions>
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation To="#1ABC9C" Duration="0:0:0.3" 
+                                        Storyboard.TargetProperty="(Control.Background).(SolidColorBrush.Color)"/>
+                                            <DoubleAnimation To="1.0" Duration="0:0:0.3"
+                                         Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)"/>
+                                            <DoubleAnimation To="1.0" Duration="0:0:0.3"
+                                         Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.ExitActions>
                             </Trigger>
                             <Trigger Property="IsPressed" Value="True">
                                 <Setter Property="Background" Value="#148F77"/>
@@ -58,6 +116,205 @@
                     </Style>
                 </Button.Style>
             </Button>
+
+            <!-- Place Ceilings Button -->
+            <Button Content="Place Ceilings" Width="200" Height="40" FontSize="16" FontWeight="Bold" 
+            Background="#1ABC9C" Foreground="White" BorderThickness="0"
+            Cursor="Hand" Padding="10,5" Command="{Binding CreateCeilingCommand}" Margin="0,0,0,10">
+                <Button.Template>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="20" 
+                        BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                            <Border.RenderTransform>
+                                <ScaleTransform ScaleX="1" ScaleY="1"/>
+                            </Border.RenderTransform>
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+>>>>>>> Stashed changes
+                        <Setter Property="Background" Value="#1ABC9C"/>
+                        <Setter Property="Foreground" Value="White"/>
+                        <Setter Property="BorderBrush" Value="Transparent"/>
+                        <Setter Property="BorderThickness" Value="0"/>
+                        <Setter Property="Padding" Value="10,5"/>
+                        <Setter Property="Cursor" Value="Hand"/>
+                        <Setter Property="SnapsToDevicePixels" Value="True"/>
+                        <Setter Property="OverridesDefaultStyle" Value="True"/>
+                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                        <Setter Property="VerticalContentAlignment" Value="Center"/>
+                        <Setter Property="FontSize" Value="16"/>
+                        <Setter Property="FontWeight" Value="Bold"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation To="#16A085" Duration="0:0:0.3" 
+                                        Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"/>
+                                            <DoubleAnimation To="1.1" Duration="0:0:0.3"
+                                         Storyboard.TargetProperty="(Button.RenderTransform).(ScaleTransform.ScaleX)"/>
+                                            <DoubleAnimation To="1.1" Duration="0:0:0.3"
+                                         Storyboard.TargetProperty="(Button.RenderTransform).(ScaleTransform.ScaleY)"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.EnterActions>
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation To="#1ABC9C" Duration="0:0:0.3" 
+                                        Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"/>
+                                            <DoubleAnimation To="1.0" Duration="0:0:0.3"
+                                         Storyboard.TargetProperty="(Button.RenderTransform).(ScaleTransform.ScaleX)"/>
+                                            <DoubleAnimation To="1.0" Duration="0:0:0.3"
+                                         Storyboard.TargetProperty="(Button.RenderTransform).(ScaleTransform.ScaleY)"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.ExitActions>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="#148F77"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+
+            <!-- Place Walls Button -->
+            <Button Content="Place Walls" Width="200" Height="40" FontSize="16" FontWeight="Bold" 
+            Background="#1ABC9C" Foreground="White" BorderThickness="0"
+            Cursor="Hand" Padding="10,5" Command="{Binding CreateWallsCommand}" Margin="0,0,0,10">
+                <Button.Template>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="20" 
+                        BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                            <Border.RenderTransform>
+                                <ScaleTransform ScaleX="1" ScaleY="1"/>
+                            </Border.RenderTransform>
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Background" Value="#1ABC9C"/>
+                        <Setter Property="Foreground" Value="White"/>
+                        <Setter Property="BorderBrush" Value="Transparent"/>
+                        <Setter Property="BorderThickness" Value="0"/>
+                        <Setter Property="Padding" Value="10,5"/>
+                        <Setter Property="Cursor" Value="Hand"/>
+                        <Setter Property="SnapsToDevicePixels" Value="True"/>
+                        <Setter Property="OverridesDefaultStyle" Value="True"/>
+                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                        <Setter Property="VerticalContentAlignment" Value="Center"/>
+                        <Setter Property="FontSize" Value="16"/>
+                        <Setter Property="FontWeight" Value="Bold"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation To="#16A085" Duration="0:0:0.3" 
+                                        Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"/>
+                                            <DoubleAnimation To="1.1" Duration="0:0:0.3"
+                                         Storyboard.TargetProperty="(Button.RenderTransform).(ScaleTransform.ScaleX)"/>
+                                            <DoubleAnimation To="1.1" Duration="0:0:0.3"
+                                         Storyboard.TargetProperty="(Button.RenderTransform).(ScaleTransform.ScaleY)"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.EnterActions>
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation To="#1ABC9C" Duration="0:0:0.3" 
+                                        Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"/>
+                                            <DoubleAnimation To="1.0" Duration="0:0:0.3"
+                                         Storyboard.TargetProperty="(Button.RenderTransform).(ScaleTransform.ScaleX)"/>
+                                            <DoubleAnimation To="1.0" Duration="0:0:0.3"
+                                         Storyboard.TargetProperty="(Button.RenderTransform).(ScaleTransform.ScaleY)"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.ExitActions>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="#148F77"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+
+            <!-- Set Parameters Button -->
+            <Button Content="Set Parameters" Width="200" Height="40" FontSize="16" FontWeight="Bold" 
+            Background="#1ABC9C" Foreground="White" BorderThickness="0"
+            Cursor="Hand" Padding="10,5" Command="{Binding SetParametersCommand}">
+                <Button.Template>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="20" 
+                        BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                            <Border.RenderTransform>
+                                <ScaleTransform ScaleX="1" ScaleY="1"/>
+                            </Border.RenderTransform>
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Background" Value="#1ABC9C"/>
+                        <Setter Property="Foreground" Value="White"/>
+                        <Setter Property="BorderBrush" Value="Transparent"/>
+                        <Setter Property="BorderThickness" Value="0"/>
+                        <Setter Property="Padding" Value="10,5"/>
+                        <Setter Property="Cursor" Value="Hand"/>
+                        <Setter Property="SnapsToDevicePixels" Value="True"/>
+                        <Setter Property="OverridesDefaultStyle" Value="True"/>
+                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                        <Setter Property="VerticalContentAlignment" Value="Center"/>
+                        <Setter Property="FontSize" Value="16"/>
+                        <Setter Property="FontWeight" Value="Bold"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation To="#16A085" Duration="0:0:0.3" 
+                                        Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"/>
+                                            <DoubleAnimation To="1.1" Duration="0:0:0.3"
+                                         Storyboard.TargetProperty="(Button.RenderTransform).(ScaleTransform.ScaleX)"/>
+                                            <DoubleAnimation To="1.1" Duration="0:0:0.3"
+                                         Storyboard.TargetProperty="(Button.RenderTransform).(ScaleTransform.ScaleY)"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.EnterActions>
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation To="#1ABC9C" Duration="0:0:0.3" 
+                                        Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"/>
+                                            <DoubleAnimation To="1.0" Duration="0:0:0.3"
+                                         Storyboard.TargetProperty="(Button.RenderTransform).(ScaleTransform.ScaleX)"/>
+                                            <DoubleAnimation To="1.0" Duration="0:0:0.3"
+                                         Storyboard.TargetProperty="(Button.RenderTransform).(ScaleTransform.ScaleY)"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.ExitActions>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="#148F77"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+        </StackPanel>
+
+        <!-- List Panel -->
+        <StackPanel Grid.Row="1" Grid.Column="1" Margin="10" Background="#34495E" Width="250" VerticalAlignment="Stretch">
+            <TextBlock Text="List of Items" FontSize="18" FontWeight="Bold" Foreground="#ECF0F1" Margin="10"/>
+            <ListBox ItemsSource="{Binding Items}" Margin="10" Background="#ECF0F1"/>
         </StackPanel>
     </Grid>
 </Window>

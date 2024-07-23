@@ -26,7 +26,7 @@
             <!-- Place Floors Button -->
             <Button Content="Place Floors" Width="200" Height="40" FontSize="16" FontWeight="Bold" 
     Background="#1ABC9C" Foreground="White" BorderThickness="0"
-    Cursor="Hand" Padding="10,5" Command="{Binding CreateFloorCommand}" Margin="0,0,0,10">
+    Cursor="Hand" Padding="10,5" Command="{Binding CreateFloorCommand}" Margin="0,0,0,10" Click="placeFloorsButton_Click">
                 <Button.Template>
                     <ControlTemplate TargetType="{x:Type Button}">
                         <Border Background="{TemplateBinding Background}" CornerRadius="20" 
@@ -90,7 +90,7 @@
             <!-- Place Ceilings Button -->
             <Button Content="Place Ceilings" Width="200" Height="40" FontSize="16" FontWeight="Bold" 
     Background="#1ABC9C" Foreground="White" BorderThickness="0"
-    Cursor="Hand" Padding="10,5" Command="{Binding CreateCeilingCommand}" Margin="0,0,0,10">
+    Cursor="Hand" Padding="10,5" Command="{Binding CreateCeilingCommand}" Margin="0,0,0,10" Click="placeCeilingButton_Click">
                 <Button.Template>
                     <ControlTemplate TargetType="{x:Type Button}">
                         <Border Background="{TemplateBinding Background}" CornerRadius="20" 
@@ -154,7 +154,7 @@
             <!-- Place Walls Button -->
             <Button Content="Place Walls" Width="200" Height="40" FontSize="16" FontWeight="Bold" 
     Background="#1ABC9C" Foreground="White" BorderThickness="0"
-    Cursor="Hand" Padding="10,5" Command="{Binding CreateWallsCommand}" Margin="0,0,0,10">
+    Cursor="Hand" Padding="10,5" Command="{Binding CreateWallsCommand}" Margin="0,0,0,10" Click="placeWallButton_Click">
                 <Button.Template>
                     <ControlTemplate TargetType="{x:Type Button}">
                         <Border Background="{TemplateBinding Background}" CornerRadius="20" 
@@ -218,7 +218,7 @@
             <!-- Set Parameters Button -->
             <Button Content="Set Parameters" Width="200" Height="40" FontSize="16" FontWeight="Bold" 
     Background="#1ABC9C" Foreground="White" BorderThickness="0"
-    Cursor="Hand" Padding="10,5" Command="{Binding SetParametersCommand}">
+    Cursor="Hand" Padding="10,5" Command="{Binding SetParametersCommand}" Click="setParametersButton_Click">
                 <Button.Template>
                     <ControlTemplate TargetType="{x:Type Button}">
                         <Border Background="{TemplateBinding Background}" CornerRadius="20" 

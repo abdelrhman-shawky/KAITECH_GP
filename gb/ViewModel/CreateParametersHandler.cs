@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace gb.ViewModel
 {
-    public class CreateCeilingHandler : IExternalEventHandler
+    internal class CreateParametersHandler : IExternalEventHandler
     {
         public void Execute(UIApplication app)
         {
@@ -18,16 +18,15 @@ namespace gb.ViewModel
             Document doc = uIDocument.Document;
 
             // Create a TransactionManager instance to manage transactions for floor creation
-            TransactionManager transactionManager = new TransactionManager(doc, app);
+            TransactionManager transactionManager = new TransactionManager(doc,app);
 
             // Call the CreateFloor method of TransactionManager to create floors in the document
-            transactionManager.CreateCeiling();
+            transactionManager.CreatePrameters();
         }
-
 
         public string GetName()
         {
-            return "CreatCeilingHandler";
+            return "CreateParametersHandler";
         }
     }
 }

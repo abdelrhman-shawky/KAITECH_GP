@@ -122,5 +122,26 @@ namespace gb.Model.Creation
         {
             CreateOrUpdateSharedParameter("Room",BuiltInCategory.OST_Rooms, definitionName, specTypeId, groupTypeId, visibilityState);
         }
+
+
+
+
+        //public void CreatePrameters()
+        //{
+        //    //define parameter names
+
+        //    string celingHight = "Ceiling Height";   // double
+        //    string furnishedState = "Furnished";     //bool
+        //    string uniqueState = "Unique";          //bool
+        //    string isParameterExsists = "isParameterExsists"; //bool
+
+
+        //    CreateOrUpdateRoomParameter(celingHight, SpecTypeId.Length, GroupTypeId.IdentityData, true);
+        //    CreateOrUpdateRoomParameter(uniqueState, SpecTypeId.Boolean.YesNo, GroupTypeId.IdentityData, true);
+        //    CreateOrUpdateRoomParameter(furnishedState, SpecTypeId.Boolean.YesNo, GroupTypeId.IdentityData, false); // when everything is done
+
+        //    CreateOrUpdateRoomParameter(isParameterExsists, SpecTypeId.Boolean.YesNo, GroupTypeId.IdentityData, false); //all the rooms has the parameters
+        //}
+
     }
 }

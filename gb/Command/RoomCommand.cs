@@ -25,26 +25,6 @@ namespace gb
             Application application = uIApplication.Application;
 
 
-
-            ParameterCreation parameterCreation = new ParameterCreation(uIApplication);
-
-
-
-            //define parameter names
-
-            //string celingHight = "Ceiling Height";   // double
-            //string furnishedState = "Furnished";     //bool
-            //string uniqueState = "Unique";          //bool
-            //string isParameterExsists="isParameterExsists"; //bool
-
-            //parameterCreation.CreateOrUpdateRoomParameter(celingHight, SpecTypeId.Length, GroupTypeId.IdentityData, true);
-            //parameterCreation.CreateOrUpdateRoomParameter(uniqueState, SpecTypeId.Boolean.YesNo, GroupTypeId.IdentityData, true);
-            //parameterCreation.CreateOrUpdateRoomParameter(furnishedState, SpecTypeId.Boolean.YesNo, GroupTypeId.IdentityData, false); // when everything is done
-
-            //parameterCreation.CreateOrUpdateRoomParameter(isParameterExsists, SpecTypeId.Boolean.YesNo, GroupTypeId.IdentityData, false); //all the rooms has the parameters
-
-
-
             MainWindow mainWindow = new MainWindow(uIDocument);
             mainWindow.Show();
 

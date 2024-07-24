@@ -94,7 +94,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\Creation\ParameterCreation.cs" />
+    <Compile Include="Model\RevitHelper\GeometryOperation.cs" />
     <Compile Include="ViewModel\CreateCeilingHandler.cs" />
+    <Compile Include="ViewModel\CreateParametersHandler.cs" />
+    <Compile Include="ViewModel\CreateWallHandler.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\CreateFloorHandler.cs" />
     <Compile Include="Command\RoomCommand.cs" />

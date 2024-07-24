@@ -27,6 +27,12 @@ namespace gb.Model
         private readonly CreateCeilingHandler createCeilingHandler;
 
 
+        private readonly ExternalEvent createWallEvent;
+        private readonly CreateWallHandler createWallHandler;
+
+        private readonly ExternalEvent createParameterEvent;
+        private readonly CreateParametersHandler createParametersHandler;
+
         /// <summary>
         /// Initializes a new instance of the MainViewModel class.
         /// Sets up command bindings and event handlers for floor creation.
@@ -41,12 +47,21 @@ namespace gb.Model
             createCeilingHandler = new CreateCeilingHandler();
             createCeilingEvent = ExternalEvent.Create(createCeilingHandler);
 
+            createWallHandler = new CreateWallHandler();
+            createWallEvent = ExternalEvent.Create(createWallHandler);
+
+            createParametersHandler = new CreateParametersHandler();
+            createWallEvent = ExternalEvent.Create(createParametersHandler);
+
+
             //create a RelayCommand for the CreateFloorCommand
             CreateFloorCommand = new RelayCommand(CreateFloor);
 
             CreateCeilingCommand = new RelayCommand(CreateCeiling);
 
+            CreateWallCommand = new RelayCommand(CreateWall);
 
+            CreateParameterCommand = new RelayCommand(CreateParameter);
         }
 
 
@@ -55,7 +70,18 @@ namespace gb.Model
         /// </summary>
         public ICommand CreateFloorCommand { get; }
 
+        /// <summary>
+        /// ICommand property bound to a UI element (e.g., button) to create Ceiling.
+        /// </summary>
         public ICommand CreateCeilingCommand { get; }
+
+        /// <summary>
+        /// ICommand property bound to a UI element (e.g., button) to create Wall.
+        /// </summary>
+        public ICommand CreateWallCommand { get; }
+
+        public ICommand CreateParameterCommand { get; }
+
 
         /// <summary>
         /// Method called when the CreateFloorCommand is executed.
@@ -68,12 +94,30 @@ namespace gb.Model
             createFloorEvent.Raise();
         }
 
-
+        /// <summary>
+        /// Method called when the CreateCeilingCommand is executed.
+        /// Raises the ExternalEvent to execute the CreateCeilingHandler.
+        /// </summary>
         private void CreateCeiling()
         {
+            // Raise the ExternalEvent to execute the CreateCeilingHandler
             createCeilingEvent.Raise();
         }
 
+        /// <summary>
+        /// Method called when the CreateWallCommand is executed.
+        /// Raises the ExternalEvent to execute the CreateWallHandler.
+        /// </summary>
+        private void CreateWall()
+        {
+            // Raise the ExternalEvent to execute the CreateWallHandler
+            createWallEvent.Raise();
+        }
+
+        private void CreateParameter()
+        {
+            createParameterEvent.Raise();
+        }
 
         /// <summary>
         /// Implementation of INotifyPropertyChanged for property change notifications.

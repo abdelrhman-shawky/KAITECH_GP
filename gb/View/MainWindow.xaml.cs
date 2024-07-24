@@ -48,28 +48,60 @@ namespace gb.View
 
 
         /// <summary>
+        /// Event handler for the placeCeilingButton_Click event.
+        /// Executes the CreateCeilingCommand defined in MainViewModel when the button is clicked.
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">Event arguments.</param>
+        private void placeCeilingButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (MainViewModel.CreateCeilingCommand.CanExecute(null))
+            {
+                MainViewModel.CreateCeilingCommand.Execute(null);
+            }
+        }
+
+
+
+        /// <summary>
+        /// Event handler for the placeWallButton_Click event.
+        /// Executes the CreateWallCommand defined in MainViewModel when the button is clicked.
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">Event arguments.</param>
+        private void placeWallButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Execute the command when the button is clicked
+            if (MainViewModel.CreateWallCommand.CanExecute(null))
+            {
+                MainViewModel.CreateWallCommand.Execute(null);
+            }
+        }
+
+
+        /// <summary>
         /// Event handler for the FinishRoomsFloorsButton Click event.
         /// Executes the CreateFloorCommand defined in MainViewModel when the button is clicked.
         /// </summary>
         /// <param name="sender">The object that raised the event.</param>
         /// <param name="e">Event arguments.</param>
-        private void FinishRoomsFloorsButton_Click(object sender, RoutedEventArgs e)
+        private void placeFloorsButton_Click(object sender, RoutedEventArgs e)
         {
-
             // Execute the command when the button is clicked
             if (MainViewModel.CreateFloorCommand.CanExecute(null))
             {
                 MainViewModel.CreateFloorCommand.Execute(null);
             }
-
         }
 
 
-        private void FinishRoomsCeilingButton_Click(object sender, RoutedEventArgs e)
+
+        private void setParametersButton_Click(object sender, RoutedEventArgs e)
         {
-            if (MainViewModel.CreateCeilingCommand.CanExecute(null))
+            // Execute the command when the button is clicked
+            if (MainViewModel.CreateParameterCommand.CanExecute(null))
             {
-                MainViewModel.CreateCeilingCommand.Execute(null);
+                MainViewModel.CreateParameterCommand.Execute(null);
             }
         }
     }

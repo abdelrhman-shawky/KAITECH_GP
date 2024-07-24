@@ -1,5 +1,5 @@
-﻿using Autodesk.Revit.DB;
-using Autodesk.Revit.UI;
+﻿using Autodesk.Revit.UI;
+using Autodesk.Revit.DB;
 using gb.Model;
 using System;
 using System.Collections.Generic;
@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace gb.ViewModel
 {
-    public class CreateCeilingHandler : IExternalEventHandler
+    public class CreateWallHandler : IExternalEventHandler
     {
         public void Execute(UIApplication app)
         {
@@ -21,13 +21,13 @@ namespace gb.ViewModel
             TransactionManager transactionManager = new TransactionManager(doc, app);
 
             // Call the CreateFloor method of TransactionManager to create floors in the document
-            transactionManager.CreateCeiling();
+            transactionManager.CreateWall();
         }
 
 
         public string GetName()
         {
-            return "CreatCeilingHandler";
+            return "createWallHandler";
         }
     }
 }

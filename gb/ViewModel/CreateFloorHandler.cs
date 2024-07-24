@@ -27,7 +27,7 @@ namespace gb
             Document doc = uIDocument.Document;
 
             // Create a TransactionManager instance to manage transactions for floor creation
-            TransactionManager transactionManager = new TransactionManager(doc);
+            TransactionManager transactionManager = new TransactionManager(doc,app);
 
             // Call the CreateFloor method of TransactionManager to create floors in the document
             transactionManager.CreateFloor();

@@ -28,6 +28,7 @@ namespace gb.View
         public Document document { get; }
         public MainViewModel MainViewModel { get; }
 
+
         /// <summary>
         /// Initializes a new instance of the MainWindow class with the provided UIDocument.
         /// Sets up the UI and initializes MainViewModel as the DataContext.
@@ -95,7 +96,12 @@ namespace gb.View
         }
 
 
-
+        /// <summary>
+        /// Event handler for the setParametersButton Click event.
+        /// Executes the CreateParameterCommand defined in MainViewModel when the button is clicked.
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">Event arguments.</param>
         private void setParametersButton_Click(object sender, RoutedEventArgs e)
         {
             // Execute the command when the button is clicked

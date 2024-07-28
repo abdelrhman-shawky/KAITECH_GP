@@ -18,51 +18,20 @@ namespace gb.Model.Creation
         private Document _document;
 
         RevitFilterCollectors _filterCollectors;
+        GeneralHelperFunction _GeneralHelperFunction;
 
         /// <summary>
         /// ElementCreation is a class that is conserned with creating geomtry eg. floors,walls,celing etc...
         /// </summary>
         /// <param document="room">The room from which to retrieve the boundary curves.</param>
         /// <returns>ElementCreation instance.</returns>
-        public ElementCreation(Document document, RevitFilterCollectors revitFilterCollectors)
+        public ElementCreation(Document document, RevitFilterCollectors revitFilterCollectors, GeneralHelperFunction generalHelperFunction)
         {
             _document = document;
             _filterCollectors = revitFilterCollectors;
+            _GeneralHelperFunction = generalHelperFunction;
         }
 
-        /// <summary>
-        /// Retrieves the base boundary curves of a room.
-        /// </summary>
-        /// <param name="room">The room from which to retrieve the boundary curves.</param>
-        /// <returns>A list of CurveLoop objects representing the room's boundary curves.</returns>
-        private IList<CurveLoop> GetRoomBaseCurve(Room room)
-        {
-            // Create a new SpatialElementBoundaryOptions object
-            SpatialElementBoundaryOptions boundaryOptions = new SpatialElementBoundaryOptions();
-
-            // Get the boundary segments of the room based on the boundary options
-            IList<IList<BoundarySegment>> boundarySegments = room.GetBoundarySegments(boundaryOptions);
-
-            // Initialize a list to hold the CurveLoop objects
-            IList<CurveLoop> curves = new List<CurveLoop>();
-
-            // Iterate through each list of boundary segments
-            foreach (IList<BoundarySegment> segmentList in boundarySegments)
-            {
-                // Create a new CurveLoop for each set of boundary segments
-                CurveLoop curveLoop = new CurveLoop();
-
-                foreach (BoundarySegment segment in segmentList)
-                {
-                    // Get the curve from the boundary segment and append it to the CurveLoop
-                    Curve curve = segment.GetCurve();
-                    curveLoop.Append(curve);
-                }
-                curves.Add(curveLoop);
-            }
-
-            return curves;
-        }
 
 
         /// <summary>
@@ -71,9 +40,10 @@ namespace gb.Model.Creation
         /// <param room="Room">The built-in category to filter.</param>
         /// <returns>Floor floor.</returns>
         public Floor CreateRoomFloorFromParam(Room room)
-        {
+        {            
+
             // Retrieve the base boundary curves of the room
-            IList<CurveLoop> curves =GetRoomBaseCurve(room);
+            IList<CurveLoop> curves = _GeneralHelperFunction.GetRoomBaseCurve(room);
 
             // Lookup the "Floor Finish" parameter in the room
             Parameter floorTypeParam = room.LookupParameter("Floor Finish");
@@ -120,7 +90,7 @@ namespace gb.Model.Creation
         public Ceiling createRoomCelinginFromParam(Room room)
         {
             // Retrieve the base boundary curves of the room
-            IList<CurveLoop> curves = GetRoomBaseCurve(room);
+            IList<CurveLoop> curves = _GeneralHelperFunction.GetRoomBaseCurve(room);
 
             // Lookup the "Ceiling Finish" parameter in the room
             Parameter ceilingTypeParam = room.LookupParameter("Ceiling Finish");
@@ -136,15 +106,32 @@ namespace gb.Model.Creation
             IList<Element> ceilingElment = _filterCollectors.collectCeilingElements(true);
 
             // Find the specific Ceiling type based on the parameter's value string
-            Element specificCeilingType = ceilingElment.FirstOrDefault(e => e.Name == ceilingTypeParam.AsValueString());
+            CeilingType specificCeilingType = ceilingElment.FirstOrDefault(e => e.Name == ceilingTypeParam.AsValueString()) as CeilingType;
 
+
+            Parameter ceilingHeightParam = room.LookupParameter("Ceiling Height");
+            double ceilingHeightOfsset = 0.0;
+
+            if (ceilingHeightParam != null && ceilingHeightParam.AsDouble() > 0)
+            {
+                ceilingHeightOfsset=ceilingHeightParam.AsDouble();
+            }
 
             using (Transaction transaction = new Transaction(_document, "Create ceiling"))
             {
                 transaction.Start();
 
+                // Create a new CeilingType to use for this ceiling with the specified height
+                CeilingType newCeilingType = specificCeilingType.Duplicate(specificCeilingType.Name + "_Temp") as CeilingType;
+
+                if (newCeilingType != null)
+                {
+                    newCeilingType.get_Parameter(BuiltInParameter.CEILING_HEIGHTABOVELEVEL_PARAM).Set(ceilingHeightOfsset);
+                }
+                
+
                 // Create the Ceiling using the specified Ceiling type and room level
-                Ceiling myCeiling = Ceiling.Create(_document, curves, specificCeilingType.Id, room.LevelId);
+                Ceiling myCeiling = Ceiling.Create(_document, curves, newCeilingType.Id, room.LevelId);
 
                 // Commit the transaction
                 transaction.Commit();
@@ -164,80 +151,110 @@ namespace gb.Model.Creation
         public IList<Wall> createRoomWallFromParam(Room room)
         {
             // Retrieve the base boundary curves of the room
-            IList<CurveLoop> curves = GetRoomBaseCurve(room);
+            IList<CurveLoop> curves = _GeneralHelperFunction.GetRoomBaseCurve(room);
 
             // Lookup the "Wall Finish" parameter in the room
             Parameter wallTypeParam = room.LookupParameter("Wall Finish");
 
-
-
-            // check if the Wall finis is null or not spicefied
-            if (wallTypeParam.AsValueString() == null)
+            // Check if the Wall Finish parameter is null or not specified
+            if (wallTypeParam == null || wallTypeParam.AsValueString() == null)
             {
                 TaskDialog.Show("parameteris missing", "wall Finish parameter is missing");
                 return null;
             }
 
             // Collect all Wall elements
-            IList<Element> wallElment = _filterCollectors.CollectWallsElements(true);
+            IList<Element> wallElements = _filterCollectors.CollectWallsElements(true);
 
-            
+
             // Find the specific wall type based on the parameter's value string
-            Element specificWallType = wallElment.FirstOrDefault(e => e.Name == wallTypeParam.AsValueString());
+            WallType specificWallType = wallElements.OfType<WallType>().FirstOrDefault(e => e.Name == wallTypeParam.AsValueString());
+
 
             if (specificWallType == null)
             {
                 TaskDialog.Show("Wall Type Missing", "The specified wall type was not found.");
                 return null;
             }
-            // double a=(specificCeilingType as Wall).Width / 2;
 
+            IList<Level> levels = _filterCollectors.collectLevels();
 
-            
+            // Retrieve the level name from the room parameter
+            Parameter wallHeightLevelParam = room.LookupParameter("Wall Height Level");
+            Level wallHeightLevel = null;
 
+            if (wallHeightLevelParam != null && !string.IsNullOrWhiteSpace(wallHeightLevelParam.AsString()))
+            {
+                wallHeightLevel= levels.FirstOrDefault(l=> l.Name.Equals(wallHeightLevelParam.AsString(), StringComparison.OrdinalIgnoreCase));
+            }
 
+            Level nxtLevel= _GeneralHelperFunction.GetNextLevelWithHeightDifference(levels, room.Level, 1.8);
+
+            double wallHeight = nxtLevel.Elevation;
+
+             if(wallHeightLevel != null)
+            {
+                wallHeight = wallHeightLevel.Elevation;
+            }
+
+            // Create a list to store the created walls
             IList<Wall> myWalls = new List<Wall>();
-
-          
-
-             using (Transaction transaction = new Transaction(_document, "Create ceiling"))
+            
+             using (Transaction transaction = new Transaction(_document, "Create Walls"))
              {
                 transaction.Start();
 
                 foreach (CurveLoop curveLoop in curves)
                 {
 
-                    IList<Curve> curveList = curveLoop.ToList();
+                    //IList<Curve> curveList = curveLoop.ToList();
 
                     foreach (Curve curve in curveLoop)
                     {
-
                         // Calculate offset distance (half of wall width)
-                        double offsetDistance = (specificWallType as Wall).Width / 2;
+                        double offsetDistance = specificWallType.Width / 2 ;
 
+                        // Create an offset curve
+                        XYZ direction = (curve.GetEndPoint(1) - curve.GetEndPoint(0)).Normalize();
 
-                        // curve.CreateOffset(offsetDistance, );
+                        XYZ offsetVector = new XYZ(-direction.Y, direction.X, 0).Normalize() * offsetDistance;
 
-                        
+                        Curve offsetCurve = curve.CreateTransformed(Transform.CreateTranslation(offsetVector));
 
-                        Wall wall = Wall.Create(_document, curve, specificWallType.Id, room.LevelId,5000,0,false,false);
-                        myWalls.Add(wall);
+                        // Create the wall using the offset curve
+                        Wall newWall = Wall.Create(_document, offsetCurve, specificWallType.Id, room.LevelId, wallHeight, 0,false,false);
+                        myWalls.Add(newWall);
+                       
                     }
-
-
                 }
-                // Commit the transaction
-                transaction.Commit();
 
-                
-                
+                // Commit the transaction
+                transaction.Commit();                                
              }
-            // Return the created Ceiling
+
+
+            //this dose not worrrkkkkk ---------------------------------------------------------!_!_!_!_!_!
+
+            //using (Transaction transaction = new Transaction(_document, "Joining Walls"))
+            //{
+            //    transaction.Start();
+
+            //    foreach (Wall wall in myWalls)
+            //    {
+            //        _GeneralHelperFunction.JoinWallsWithRoomBoundaries(wall, room);
+
+            //    }
+            //    transaction.Commit();
+            //}
+
+
+            // Return the created wall
             return myWalls;
 
-
-
         }
+
+       
+
 
     }
 }

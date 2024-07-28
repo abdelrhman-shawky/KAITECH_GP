@@ -94,6 +94,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\Creation\ParameterCreation.cs" />
+    <Compile Include="Model\RevitHelper\GeneralHelperFunction.cs" />
     <Compile Include="Model\RevitHelper\GeometryOperation.cs" />
     <Compile Include="ViewModel\CreateCeilingHandler.cs" />
     <Compile Include="ViewModel\CreateParametersHandler.cs" />

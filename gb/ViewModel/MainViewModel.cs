@@ -51,7 +51,7 @@ namespace gb.Model
             createWallEvent = ExternalEvent.Create(createWallHandler);
 
             createParametersHandler = new CreateParametersHandler();
-            createWallEvent = ExternalEvent.Create(createParametersHandler);
+            createParameterEvent = ExternalEvent.Create(createParametersHandler);
 
 
             //create a RelayCommand for the CreateFloorCommand
@@ -80,6 +80,9 @@ namespace gb.Model
         /// </summary>
         public ICommand CreateWallCommand { get; }
 
+        /// <summary>
+        /// ICommand property bound to a UI element (e.g., button) to create parameter.
+        /// </summary>
         public ICommand CreateParameterCommand { get; }
 
 
@@ -141,6 +144,7 @@ namespace gb.Model
     /// </summary>
     public class RelayCommand : ICommand
     {
+
         private readonly Action execute;
         private readonly Func<bool> canExecute;
 
@@ -178,5 +182,7 @@ namespace gb.Model
             add { CommandManager.RequerySuggested += value; } // Subscribe to CommandManager's RequerySuggested event
             remove { CommandManager.RequerySuggested -= value; } // Unsubscribe from CommandManager's RequerySuggested event
         }
+
+
     }
 }

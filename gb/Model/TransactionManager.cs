@@ -38,6 +38,7 @@ namespace gb.Model
         {
             // Collect rooms using RevitFilterCollectors helper class
             RevitFilterCollectors revitFilterCollectors = new RevitFilterCollectors(_document);
+            GeneralHelperFunction generalHelperFunction =new GeneralHelperFunction(_document, revitFilterCollectors);
 
             IList<Room> rooms = revitFilterCollectors.CollectRooms();
 
@@ -45,7 +46,7 @@ namespace gb.Model
             if (rooms.Count != 0)
             {
                 // Initialize ElementCreation class to create floors
-                ElementCreation elementCreation = new ElementCreation(_document, revitFilterCollectors);
+                ElementCreation elementCreation = new ElementCreation(_document, revitFilterCollectors, generalHelperFunction);
 
                 // Create floors for each room
                 foreach (Room room in rooms)
@@ -67,13 +68,14 @@ namespace gb.Model
         public void CreateCeiling()
         {
             RevitFilterCollectors revitFilterCollectors = new RevitFilterCollectors(_document);
+            GeneralHelperFunction generalHelperFunction = new GeneralHelperFunction(_document, revitFilterCollectors);
 
             IList<Room> rooms = revitFilterCollectors.CollectRooms();
 
             if (rooms.Count != 0)
             {
                 // Initialize ElementCreation class to create floors
-                ElementCreation elementCreation = new ElementCreation(_document, revitFilterCollectors);
+                ElementCreation elementCreation = new ElementCreation(_document, revitFilterCollectors, generalHelperFunction);
 
                 // Create Ceiling for each room
                 foreach (Room room in rooms)
@@ -96,13 +98,14 @@ namespace gb.Model
         public void CreateWall()
         {
             RevitFilterCollectors revitFilterCollectors = new RevitFilterCollectors (_document);
+            GeneralHelperFunction generalHelperFunction = new GeneralHelperFunction(_document, revitFilterCollectors);
 
             IList<Room> rooms =revitFilterCollectors.CollectRooms();
 
             if (rooms.Count != 0)
             {
                 // Initialize ElementCreation class to create floors
-                ElementCreation elementCreation = new ElementCreation(_document, revitFilterCollectors);
+                ElementCreation elementCreation = new ElementCreation(_document, revitFilterCollectors, generalHelperFunction);
 
                 // Create Wall for each room
                 foreach (Room room in rooms)
@@ -120,17 +123,54 @@ namespace gb.Model
 
         }
 
+        /// <summary>
+        /// Collects rooms parameters in the document and add parameters for each room.
+        /// </summary>
         public void CreatePrameters()
         {
+
+            List<string> stringParameters = new List<string>();
+            List<string> boolParameters = new List<string>();
+            List<string> doubleParameters = new List<string>();
+
+
             string celingHight = "Ceiling Height";   // double
-            string furnishedState = "Furnished";     //bool
+            doubleParameters.Add(celingHight);
+
+            
+
             string uniqueState = "Unique";          //bool
-            string isParameterExsists = "isParameterExsists"; //bool
+            boolParameters.Add(uniqueState);
+
+            string wallHightLevel = "Wall Height Level";   //string
+            stringParameters.Add(wallHightLevel);
+
+
+
+            string furnishedState = "Furnished";     //bool //invs
+            string isParameterExsists = "isParameterExsists"; //bool // invs
 
             ParameterCreation parameterCreation = new ParameterCreation(_uiApplication);
 
-            parameterCreation.CreateOrUpdateRoomParameter(celingHight, SpecTypeId.Length, GroupTypeId.IdentityData, true);
-            parameterCreation.CreateOrUpdateRoomParameter(uniqueState, SpecTypeId.Boolean.YesNo, GroupTypeId.IdentityData, true);
+
+            foreach (string param in stringParameters)
+            {
+                parameterCreation.CreateOrUpdateRoomParameter(param, SpecTypeId.String.Text, GroupTypeId.IdentityData, true);
+            }
+
+            foreach (string param in boolParameters)
+            {
+                parameterCreation.CreateOrUpdateRoomParameter(param, SpecTypeId.Boolean.YesNo, GroupTypeId.IdentityData, true);
+            }
+
+            foreach (string param in doubleParameters)
+            {
+                parameterCreation.CreateOrUpdateRoomParameter(param, SpecTypeId.Boolean.YesNo, GroupTypeId.IdentityData, true);
+            }
+
+
+
+            //-invis parameters
             parameterCreation.CreateOrUpdateRoomParameter(furnishedState, SpecTypeId.Boolean.YesNo, GroupTypeId.IdentityData, false); // when everything is done
 
             parameterCreation.CreateOrUpdateRoomParameter(isParameterExsists, SpecTypeId.Boolean.YesNo, GroupTypeId.IdentityData, false); //all the rooms has the parameters

@@ -17,6 +17,7 @@ namespace gb
     [Transaction(TransactionMode.Manual)]
     public class RoomCommand : IExternalCommand
     {
+
         public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
         {
             UIDocument uIDocument = commandData.Application.ActiveUIDocument;

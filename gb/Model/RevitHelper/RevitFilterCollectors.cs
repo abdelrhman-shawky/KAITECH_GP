@@ -243,5 +243,17 @@ namespace gb.Model.RevitHelper
         }
 
 
+
+        //------------------------------Document------------------------------------//
+
+        public IList<Level> collectLevels()
+        {
+            var collector = new FilteredElementCollector(_document)
+                .OfClass(typeof(Level))
+                .Cast<Level>()
+                .ToList();
+
+            return collector;
+        }
     }
 }

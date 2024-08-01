@@ -282,8 +282,8 @@
 
         <!-- List Panel -->
         <StackPanel Grid.Row="1" Grid.Column="1" Margin="10" Background="#34495E" Width="250" VerticalAlignment="Stretch">
-            <TextBlock Text="List of Items" FontSize="18" FontWeight="Bold" Foreground="#ECF0F1" Margin="10"/>
-            <ListBox ItemsSource="{Binding Items}" Margin="10" Background="#ECF0F1"/>
+            <TextBlock Text="List of Rooms" FontSize="18" FontWeight="Bold" Foreground="#ECF0F1" Margin="10"/>
+            <ListBox ItemsSource="{Binding Rooms}" DisplayMemberPath="Name" Margin="10" Background="#ECF0F1"/>
         </StackPanel>
     </Grid>
 </Window>

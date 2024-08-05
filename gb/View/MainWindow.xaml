@@ -4,13 +4,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
         mc:Ignorable="d" 
-        Title="Design Tools" Height="500" Width="900"
+        Title="Design Tools" Height="500" Width="912"
         Background="#2C3E50"
         Topmost="True" ResizeMode="NoResize">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="300"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="458"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -18,11 +18,11 @@
         </Grid.RowDefinitions>
 
         <!-- Header -->
-        <TextBlock Grid.Row="0" Grid.ColumnSpan="2" Text="Design Tools" FontSize="30" FontWeight="Bold" Foreground="#ECF0F1" 
-                   HorizontalAlignment="Center" Margin="20"/>
+        <TextBlock Grid.Row="0" Text="Design Tools" FontSize="30" FontWeight="Bold" Foreground="#ECF0F1" 
+                   HorizontalAlignment="Left" Margin="367,20,0,20" Grid.ColumnSpan="2" Width="178"/>
 
         <!-- Main Content -->
-        <StackPanel Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20">
+        <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Height="190" Width="200">
             <!-- Place Floors Button -->
             <Button Content="Place Floors" Width="200" Height="40" FontSize="16" FontWeight="Bold" 
     Background="#1ABC9C" Foreground="White" BorderThickness="0"
@@ -280,10 +280,53 @@
             </Button>
         </StackPanel>
 
+        
+        
         <!-- List Panel -->
-        <StackPanel Grid.Row="1" Grid.Column="1" Margin="10" Background="#34495E" Width="250" VerticalAlignment="Stretch">
-            <TextBlock Text="List of Rooms" FontSize="18" FontWeight="Bold" Foreground="#ECF0F1" Margin="10"/>
-            <ListBox ItemsSource="{Binding Rooms}" DisplayMemberPath="Name" Margin="10" Background="#ECF0F1"/>
-        </StackPanel>
+        <ScrollViewer Grid.Row="1" Margin="1,10,0,10" Background="#2C3E50" Grid.Column="1">
+            <StackPanel>
+                <TextBlock Text="List of Rooms" FontSize="18" FontWeight="Bold" Foreground="#ECF0F1" Margin="10"/>
+                <DataGrid x:Name="RoomsDataGrid" AutoGenerateColumns="False" CanUserAddRows="False"
+                  VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto"
+                  Height="Auto" Background="#34495E" BorderBrush="#1ABC9C" BorderThickness="1"
+                  RowHeight="30">
+                    <!-- Set row height -->
+                    <DataGrid.ColumnHeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="Background" Value="#2C3E50"/>
+                            <!-- Background color for the header -->
+                            <Setter Property="Foreground" Value="White"/>
+                            <Setter Property="FontWeight" Value="Bold"/>
+                            <Setter Property="FontSize" Value="14"/>
+                            <Setter Property="Height" Value="30"/>
+                            <Setter Property="Padding" Value="8,4"/>
+                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                            <Setter Property="VerticalContentAlignment" Value="Center"/>
+                            <Setter Property="BorderBrush" Value="Transparent"/>
+                            <!-- Remove border -->
+                            <Setter Property="BorderThickness" Value="0"/>
+                            <!-- Remove border -->
+                            <Setter Property="Margin" Value="0"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="DataGridColumnHeader">
+                                        <Grid>
+                                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}"/>
+                                        </Grid>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </DataGrid.ColumnHeaderStyle>
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Name" Binding="{Binding roomName, Mode=OneWay}" Width="*"/>
+                        <DataGridTextColumn Header="Number" Binding="{Binding roomNumber, Mode=OneWay}" Width="Auto"/>
+                        <DataGridTextColumn Header="ID" Binding="{Binding roomId, Mode=OneWay}" Width="Auto"/>
+                        <DataGridCheckBoxColumn Header="Unique" Binding="{Binding isUnique, Mode=OneWay}" Width="Auto"/>
+                        <DataGridTextColumn Header="Level" Binding="{Binding roomLevel, Mode=OneWay}" Width="*"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </StackPanel>
+        </ScrollViewer>
     </Grid>
 </Window>

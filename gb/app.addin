@@ -1,22 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
 <RevitAddIns>
-	
-	<AddIn Type="Command">
-		
-		<Name>BIM Helper</Name>
+	<AddIn Type="Application">
+		<Name>Room Finisher</Name>
 		
 		<Assembly>gb.dll</Assembly>
 		
-		<AddInId>
-			FF9D3F49-089B-4B4F-B007-BEBCEC2EACFA
-		</AddInId>
+		<AddInId>080DAF49-B473-4748-947D-A5AC17576837</AddInId>
+		
+		<FullClassName>gb.RoomExternalApplication</FullClassName>
 		
 		<VendorId>Abdelrhman Shawky Ahmed</VendorId>
-		
 		<VendorDescription>Leading Innovators in BIM Solutions</VendorDescription>
-		
 		<Description>A tool to enhance and automate BIM workflows.</Description>
-		
 		<LanguageType>CSHARP</LanguageType>
 		<TargetProduct>Revit</TargetProduct>
 		<TargetProductVersion>2024</TargetProductVersion>

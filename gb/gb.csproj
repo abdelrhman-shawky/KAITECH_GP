@@ -93,7 +93,9 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="RoomExternalApplication.cs" />
     <Compile Include="Model\Creation\ParameterCreation.cs" />
+    <Compile Include="Model\Data\RoomData.cs" />
     <Compile Include="Model\RevitHelper\GeneralHelperFunction.cs" />
     <Compile Include="Model\RevitHelper\GeometryOperation.cs" />
     <Compile Include="ViewModel\CreateCeilingHandler.cs" />
@@ -110,9 +112,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="References\Resources\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="app.addin" />
   </ItemGroup>
@@ -121,6 +121,9 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="References\Resources\room.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

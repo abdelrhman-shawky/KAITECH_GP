@@ -1,13 +1,13 @@
-﻿using Autodesk.Revit.Creation;
-using Autodesk.Revit.DB;
-using Autodesk.Revit.UI;
+﻿using Autodesk.Revit.UI;
+using gb.Model.Data;
 using gb.ViewModel;
 using System;
-using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace gb.Model
@@ -33,6 +33,7 @@ namespace gb.Model
         private readonly ExternalEvent createParameterEvent;
         private readonly CreateParametersHandler createParametersHandler;
 
+
         /// <summary>
         /// Initializes a new instance of the MainViewModel class.
         /// Sets up command bindings and event handlers for floor creation.
@@ -54,6 +55,7 @@ namespace gb.Model
             createParameterEvent = ExternalEvent.Create(createParametersHandler);
 
 
+
             //create a RelayCommand for the CreateFloorCommand
             CreateFloorCommand = new RelayCommand(CreateFloor);
 
@@ -62,6 +64,7 @@ namespace gb.Model
             CreateWallCommand = new RelayCommand(CreateWall);
 
             CreateParameterCommand = new RelayCommand(CreateParameter);
+   
         }
 
 
@@ -85,6 +88,7 @@ namespace gb.Model
         /// </summary>
         public ICommand CreateParameterCommand { get; }
 
+        public ICommand LoadRoomCommand { get; }
 
         /// <summary>
         /// Method called when the CreateFloorCommand is executed.
@@ -120,7 +124,11 @@ namespace gb.Model
         private void CreateParameter()
         {
             createParameterEvent.Raise();
+
+
         }
+
+
 
         /// <summary>
         /// Implementation of INotifyPropertyChanged for property change notifications.

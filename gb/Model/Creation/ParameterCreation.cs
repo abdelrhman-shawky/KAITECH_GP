@@ -86,7 +86,6 @@ namespace gb.Model.Creation
 
             Definition definition = existingDefinition ?? definitionGroup.Definitions.Create(options);
 
-           // definition = definitionGroup.Definitions.Create(options);
 
             CategorySet categorySet = _application.Create.NewCategorySet();
 

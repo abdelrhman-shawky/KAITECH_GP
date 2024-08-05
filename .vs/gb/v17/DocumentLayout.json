@@ -1,26 +1,30 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\eng1\\Desktop\\Revit2024_Addon\\KAITECH_GP\\",
+  "WorkspaceRootPath": "D:\\workshops\\BIM_Dev\\KAITECH_GP\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{262D5BCB-BAE5-4CC3-B9A6-A4780366CF9D}|gb\\gb.csproj|c:\\users\\eng1\\desktop\\revit2024_addon\\kaitech_gp\\gb\\model\\revithelper\\generalhelperfunction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{262D5BCB-BAE5-4CC3-B9A6-A4780366CF9D}|gb\\gb.csproj|solutionrelative:gb\\model\\revithelper\\generalhelperfunction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{262D5BCB-BAE5-4CC3-B9A6-A4780366CF9D}|gb\\gb.csproj|c:\\users\\eng1\\desktop\\revit2024_addon\\kaitech_gp\\gb\\command\\roomcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{262D5BCB-BAE5-4CC3-B9A6-A4780366CF9D}|gb\\gb.csproj|solutionrelative:gb\\command\\roomcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{262D5BCB-BAE5-4CC3-B9A6-A4780366CF9D}|gb\\gb.csproj|c:\\users\\eng1\\desktop\\revit2024_addon\\kaitech_gp\\gb\\viewmodel\\mainviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{262D5BCB-BAE5-4CC3-B9A6-A4780366CF9D}|gb\\gb.csproj|solutionrelative:gb\\viewmodel\\mainviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{262D5BCB-BAE5-4CC3-B9A6-A4780366CF9D}|gb\\gb.csproj|c:\\users\\eng1\\desktop\\revit2024_addon\\kaitech_gp\\gb\\view\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{262D5BCB-BAE5-4CC3-B9A6-A4780366CF9D}|gb\\gb.csproj|d:\\workshops\\bim_dev\\kaitech_gp\\gb\\view\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{262D5BCB-BAE5-4CC3-B9A6-A4780366CF9D}|gb\\gb.csproj|solutionrelative:gb\\view\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{262D5BCB-BAE5-4CC3-B9A6-A4780366CF9D}|gb\\gb.csproj|c:\\users\\eng1\\desktop\\revit2024_addon\\kaitech_gp\\gb\\model\\transactionmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{262D5BCB-BAE5-4CC3-B9A6-A4780366CF9D}|gb\\gb.csproj|solutionrelative:gb\\model\\transactionmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{262D5BCB-BAE5-4CC3-B9A6-A4780366CF9D}|gb\\gb.csproj|d:\\workshops\\bim_dev\\kaitech_gp\\gb\\references\\resources\\room.png||{58961B49-13E0-48C0-9258-13CBC4D40279}",
+      "RelativeMoniker": "D:0:0:{262D5BCB-BAE5-4CC3-B9A6-A4780366CF9D}|gb\\gb.csproj|solutionrelative:gb\\references\\resources\\room.png||{58961B49-13E0-48C0-9258-13CBC4D40279}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{262D5BCB-BAE5-4CC3-B9A6-A4780366CF9D}|gb\\gb.csproj|d:\\workshops\\bim_dev\\kaitech_gp\\gb\\view\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{262D5BCB-BAE5-4CC3-B9A6-A4780366CF9D}|gb\\gb.csproj|solutionrelative:gb\\view\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{262D5BCB-BAE5-4CC3-B9A6-A4780366CF9D}|gb\\gb.csproj|d:\\workshops\\bim_dev\\kaitech_gp\\gb\\model\\data\\roomdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{262D5BCB-BAE5-4CC3-B9A6-A4780366CF9D}|gb\\gb.csproj|solutionrelative:gb\\model\\data\\roomdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{262D5BCB-BAE5-4CC3-B9A6-A4780366CF9D}|gb\\gb.csproj|d:\\workshops\\bim_dev\\kaitech_gp\\gb\\app.addin||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{262D5BCB-BAE5-4CC3-B9A6-A4780366CF9D}|gb\\gb.csproj|solutionrelative:gb\\app.addin||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{262D5BCB-BAE5-4CC3-B9A6-A4780366CF9D}|gb\\gb.csproj|d:\\workshops\\bim_dev\\kaitech_gp\\gb\\roomexternalapplication.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{262D5BCB-BAE5-4CC3-B9A6-A4780366CF9D}|gb\\gb.csproj|solutionrelative:gb\\roomexternalapplication.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,75 +34,82 @@
       "DocumentGroups": [
         {
           "DockedWidth": 147,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 1,
           "Children": [
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
-            },
-            {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "MainViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\eng1\\Desktop\\Revit2024_Addon\\KAITECH_GP\\gb\\ViewModel\\MainViewModel.cs",
-              "RelativeDocumentMoniker": "gb\\ViewModel\\MainViewModel.cs",
-              "ToolTip": "C:\\Users\\eng1\\Desktop\\Revit2024_Addon\\KAITECH_GP\\gb\\ViewModel\\MainViewModel.cs",
-              "RelativeToolTip": "gb\\ViewModel\\MainViewModel.cs",
-              "ViewState": "AQIAAFUAAAAAAAAAAAAIwBwAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-28T14:26:45.36Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "MainWindow.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\eng1\\Desktop\\Revit2024_Addon\\KAITECH_GP\\gb\\View\\MainWindow.xaml.cs",
-              "RelativeDocumentMoniker": "gb\\View\\MainWindow.xaml.cs",
-              "ToolTip": "C:\\Users\\eng1\\Desktop\\Revit2024_Addon\\KAITECH_GP\\gb\\View\\MainWindow.xaml.cs",
-              "RelativeToolTip": "gb\\View\\MainWindow.xaml.cs",
-              "ViewState": "AQIAABsAAAAAAAAAAAAgwCkAAAAiAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-28T14:18:53.078Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "TransactionManager.cs",
-              "DocumentMoniker": "C:\\Users\\eng1\\Desktop\\Revit2024_Addon\\KAITECH_GP\\gb\\Model\\TransactionManager.cs",
-              "RelativeDocumentMoniker": "gb\\Model\\TransactionManager.cs",
-              "ToolTip": "C:\\Users\\eng1\\Desktop\\Revit2024_Addon\\KAITECH_GP\\gb\\Model\\TransactionManager.cs",
-              "RelativeToolTip": "gb\\Model\\TransactionManager.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAABQAAAAzAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-28T13:21:31.696Z",
+              "DocumentIndex": 1,
+              "Title": "room.png",
+              "DocumentMoniker": "D:\\workshops\\BIM_Dev\\KAITECH_GP\\gb\\References\\Resources\\room.png",
+              "RelativeDocumentMoniker": "gb\\References\\Resources\\room.png",
+              "ToolTip": "D:\\workshops\\BIM_Dev\\KAITECH_GP\\gb\\References\\Resources\\room.png",
+              "RelativeToolTip": "gb\\References\\Resources\\room.png",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001533|",
+              "WhenOpened": "2024-08-05T22:41:33.515Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "GeneralHelperFunction.cs",
-              "DocumentMoniker": "C:\\Users\\eng1\\Desktop\\Revit2024_Addon\\KAITECH_GP\\gb\\Model\\RevitHelper\\GeneralHelperFunction.cs",
-              "RelativeDocumentMoniker": "gb\\Model\\RevitHelper\\GeneralHelperFunction.cs",
-              "ToolTip": "C:\\Users\\eng1\\Desktop\\Revit2024_Addon\\KAITECH_GP\\gb\\Model\\RevitHelper\\GeneralHelperFunction.cs",
-              "RelativeToolTip": "gb\\Model\\RevitHelper\\GeneralHelperFunction.cs",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAAABQAAAAhAAAA",
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "D:\\workshops\\BIM_Dev\\KAITECH_GP\\gb\\View\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "gb\\View\\MainWindow.xaml.cs",
+              "ToolTip": "D:\\workshops\\BIM_Dev\\KAITECH_GP\\gb\\View\\MainWindow.xaml.cs",
+              "RelativeToolTip": "gb\\View\\MainWindow.xaml.cs",
+              "ViewState": "AQIAAFMAAAAAAAAAAAAmwHgAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-28T13:06:19.241Z",
+              "WhenOpened": "2024-08-05T22:35:49.506Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "RoomCommand.cs",
-              "DocumentMoniker": "C:\\Users\\eng1\\Desktop\\Revit2024_Addon\\KAITECH_GP\\gb\\Command\\RoomCommand.cs",
-              "RelativeDocumentMoniker": "gb\\Command\\RoomCommand.cs",
-              "ToolTip": "C:\\Users\\eng1\\Desktop\\Revit2024_Addon\\KAITECH_GP\\gb\\Command\\RoomCommand.cs",
-              "RelativeToolTip": "gb\\Command\\RoomCommand.cs",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAswA8AAAAAAAAA",
+              "DocumentIndex": 3,
+              "Title": "RoomData.cs",
+              "DocumentMoniker": "D:\\workshops\\BIM_Dev\\KAITECH_GP\\gb\\Model\\Data\\RoomData.cs",
+              "RelativeDocumentMoniker": "gb\\Model\\Data\\RoomData.cs",
+              "ToolTip": "D:\\workshops\\BIM_Dev\\KAITECH_GP\\gb\\Model\\Data\\RoomData.cs",
+              "RelativeToolTip": "gb\\Model\\Data\\RoomData.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAxAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-07T08:29:29.423Z",
+              "WhenOpened": "2024-08-05T22:35:12.801Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "D:\\workshops\\BIM_Dev\\KAITECH_GP\\gb\\View\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "gb\\View\\MainWindow.xaml",
+              "ToolTip": "D:\\workshops\\BIM_Dev\\KAITECH_GP\\gb\\View\\MainWindow.xaml",
+              "RelativeToolTip": "gb\\View\\MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-08-05T22:34:22.663Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "app.addin",
+              "DocumentMoniker": "D:\\workshops\\BIM_Dev\\KAITECH_GP\\gb\\app.addin",
+              "RelativeDocumentMoniker": "gb\\app.addin",
+              "ToolTip": "D:\\workshops\\BIM_Dev\\KAITECH_GP\\gb\\app.addin",
+              "RelativeToolTip": "gb\\app.addin",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAlAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000072|",
+              "WhenOpened": "2024-08-05T21:49:36.349Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "RoomExternalApplication.cs",
+              "DocumentMoniker": "D:\\workshops\\BIM_Dev\\KAITECH_GP\\gb\\RoomExternalApplication.cs",
+              "RelativeDocumentMoniker": "gb\\RoomExternalApplication.cs",
+              "ToolTip": "D:\\workshops\\BIM_Dev\\KAITECH_GP\\gb\\RoomExternalApplication.cs",
+              "RelativeToolTip": "gb\\RoomExternalApplication.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABYAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-05T20:34:41.683Z",
               "EditorCaption": ""
             }
           ]

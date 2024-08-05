@@ -110,6 +110,7 @@ namespace gb.Model.Creation
 
 
             Parameter ceilingHeightParam = room.LookupParameter("Ceiling Height");
+
             double ceilingHeightOfsset = 0.0;
 
             if (ceilingHeightParam != null && ceilingHeightParam.AsDouble() > 0)
@@ -126,12 +127,12 @@ namespace gb.Model.Creation
 
                 if (newCeilingType != null)
                 {
-                    newCeilingType.get_Parameter(BuiltInParameter.CEILING_HEIGHTABOVELEVEL_PARAM).Set(ceilingHeightOfsset);
+                    //newCeilingType.get_Parameter(BuiltInParameter.CEILING_HEIGHTABOVELEVEL_PARAM).Set(ceilingHeightOfsset);
                 }
                 
 
                 // Create the Ceiling using the specified Ceiling type and room level
-                Ceiling myCeiling = Ceiling.Create(_document, curves, newCeilingType.Id, room.LevelId);
+                Ceiling myCeiling = Ceiling.Create(_document, curves, specificCeilingType.Id, room.LevelId);
 
                 // Commit the transaction
                 transaction.Commit();

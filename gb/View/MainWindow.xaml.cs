@@ -1,20 +1,16 @@
 ﻿using Autodesk.Revit.DB;
+using Autodesk.Revit.DB.Architecture;
 using Autodesk.Revit.UI;
 using gb.Model;
+using gb.Model.Data;
+using gb.Model.RevitHelper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+
 
 namespace gb.View
 {
@@ -39,11 +35,16 @@ namespace gb.View
             uiDoc = uIDocument;
 
             document= uiDoc.Document;
+
+
             InitializeComponent();
 
+            LoadRoomData();
             // Initialize the MainViewModel and set it as the DataContext for data binding
             MainViewModel = new MainViewModel();
             DataContext = MainViewModel;
+
+
 
         }
 
@@ -110,6 +111,41 @@ namespace gb.View
                 MainViewModel.CreateParameterCommand.Execute(null);
             }
         }
+
+
+        private void LoadRoomData()
+        {
+            List<RoomData> roomDataList = new List<RoomData>();
+
+            RevitFilterCollectors revitFilterCollectors = new RevitFilterCollectors(document);
+
+            IList<Room> rooms = revitFilterCollectors.CollectRooms();
+
+            foreach (Room room in rooms)
+            {
+                ElementId levelId = room.LevelId;
+                Level level = document.GetElement(levelId) as Level;
+                string levelName = level?.Name ?? "Unknown";
+
+                Parameter uniqueParam = room.LookupParameter("Unique");
+                bool isUnique = uniqueParam != null && uniqueParam.AsInteger() == 1;
+
+                RoomData roomData = new RoomData
+                {
+                    roomName = room.get_Parameter(BuiltInParameter.ROOM_NAME).AsValueString(),
+                    roomNumber = room.get_Parameter(BuiltInParameter.ROOM_NUMBER).AsDouble(),
+                    roomId = room.Id.ToString(),
+                    roomLevel = levelName,
+                    isUnique = isUnique,
+                };
+
+                roomDataList.Add(roomData);
+            }
+
+            RoomsDataGrid.ItemsSource = roomDataList;
+        }
+
+    
     }
 
 }

@@ -9,6 +9,9 @@ using gb.Model.Creation;
 using Autodesk.Revit.DB.Architecture;
 using Autodesk.Revit.UI;
 using Autodesk.Revit.ApplicationServices;
+using gb.Model.Data;
+using System.Windows.Controls;
+using System.Windows;
 
 namespace gb.Model
 {
@@ -74,7 +77,7 @@ namespace gb.Model
 
             if (rooms.Count != 0)
             {
-                // Initialize ElementCreation class to create floors
+                // Initialize ElementCreation class to create Celing
                 ElementCreation elementCreation = new ElementCreation(_document, revitFilterCollectors, generalHelperFunction);
 
                 // Create Ceiling for each room
@@ -163,10 +166,10 @@ namespace gb.Model
                 parameterCreation.CreateOrUpdateRoomParameter(param, SpecTypeId.Boolean.YesNo, GroupTypeId.IdentityData, true);
             }
 
-            foreach (string param in doubleParameters)
-            {
-                parameterCreation.CreateOrUpdateRoomParameter(param, SpecTypeId.Boolean.YesNo, GroupTypeId.IdentityData, true);
-            }
+            //foreach (string param in doubleParameters)
+            //{
+            //    parameterCreation.CreateOrUpdateRoomParameter(param, SpecTypeId.Length, GroupTypeId.IdentityData, true);
+            //}
 
 
 
@@ -175,6 +178,7 @@ namespace gb.Model
 
             parameterCreation.CreateOrUpdateRoomParameter(isParameterExsists, SpecTypeId.Boolean.YesNo, GroupTypeId.IdentityData, false); //all the rooms has the parameters
         }
+      
     }
     
 

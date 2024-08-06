@@ -63,7 +63,7 @@ Click the `Place Walls` button to automatically place walls in the rooms.
 
 ## Support
 
-If you encounter any issues or have questions, please contact [Your Name/Support Email].
+If you encounter any issues or have questions, please contact [Abdelrhman Shawky/abdelrhman.shawky156@gmail.com].
 
 ## License
 

@@ -1,13 +1,7 @@
 ﻿using Autodesk.Revit.UI;
-using gb.Model.Data;
 using gb.ViewModel;
 using System;
-using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Input;
 
 namespace gb.Model
@@ -45,18 +39,21 @@ namespace gb.Model
             createFloorHandler = new CreateFloorHandler();
             createFloorEvent = ExternalEvent.Create(createFloorHandler);
 
+            // Initialize the createCeilingHandler and create an ExternalEvent for it.
             createCeilingHandler = new CreateCeilingHandler();
             createCeilingEvent = ExternalEvent.Create(createCeilingHandler);
 
+            // Initialize the createWallHandler and create an ExternalEvent for it.
             createWallHandler = new CreateWallHandler();
             createWallEvent = ExternalEvent.Create(createWallHandler);
 
+            // Initialize the createParametersHandler and create an ExternalEvent for it.
             createParametersHandler = new CreateParametersHandler();
             createParameterEvent = ExternalEvent.Create(createParametersHandler);
 
 
 
-            //create a RelayCommand for the CreateFloorCommand
+            // Create RelayCommand instances for each command.
             CreateFloorCommand = new RelayCommand(CreateFloor);
 
             CreateCeilingCommand = new RelayCommand(CreateCeiling);
@@ -88,6 +85,9 @@ namespace gb.Model
         /// </summary>
         public ICommand CreateParameterCommand { get; }
 
+        /// <summary>
+        /// ICommand property bound to a UI element (e.g., button) to create parameter.
+        /// </summary>
         public ICommand LoadRoomCommand { get; }
 
         /// <summary>
@@ -121,8 +121,13 @@ namespace gb.Model
             createWallEvent.Raise();
         }
 
+        /// <summary>
+        /// Method called when the createParametCommand is executed.
+        /// Raises the ExternalEvent to execute the createParameterEvent.
+        /// </summary>
         private void CreateParameter()
         {
+            // Raise the ExternalEvent to execute the createParameterEvent
             createParameterEvent.Raise();
 
 

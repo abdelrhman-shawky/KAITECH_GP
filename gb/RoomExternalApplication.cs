@@ -1,11 +1,7 @@
 ﻿using Autodesk.Revit.UI;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Media.Imaging;
 
 namespace gb
@@ -16,10 +12,12 @@ namespace gb
         private static readonly string PanelName = "Architecture";
         private static readonly Assembly Assembly = Assembly.GetExecutingAssembly();
 
+
         public Result OnShutdown(UIControlledApplication application)
         {
             return Result.Succeeded;
         }
+
 
         public Result OnStartup(UIControlledApplication application)
         {
@@ -49,7 +47,12 @@ namespace gb
 
             try
             {
-                CreateButton("Room", "Room Finisher", typeof(RoomCommand).FullName, $"{nameof(gb)}.References.Resources.room.png", architecturePanel, roomCommandDescription);
+                CreateButton("Room",
+                    "Room Finisher",
+                    typeof(RoomCommand).FullName,
+                    $"{nameof(gb)}.References.Resources.room-32.png",
+                    architecturePanel,
+                    roomCommandDescription);
             }
             catch (Exception ex)
             {
@@ -60,6 +63,15 @@ namespace gb
             return Result.Succeeded;
         }
 
+        /// <summary>
+        /// Creates a button on a given ribbon panel.
+        /// </summary>
+        /// <param name="buttonText">The text to display on the button.</param>
+        /// <param name="buttonName">The internal name of the button.</param>
+        /// <param name="commandNamespacePath">The namespace path of the command to be executed.</param>
+        /// <param name="iconPath">The path to the icon to display on the button.</param>
+        /// <param name="panel">The ribbon panel to add the button to.</param>
+        /// <param name="tooltip">The tooltip to display when the button is hovered over.</param>
         private PushButton CreateButton(string buttonName, string buttonText, string className, string imageUrl, RibbonPanel panel, string description = null)
         {
             PushButtonData buttonData = new PushButtonData(buttonName, buttonText, Assembly.Location, className);

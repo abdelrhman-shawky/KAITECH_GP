@@ -1,15 +1,10 @@
-﻿//using Autodesk.Revit.Creation;
-using Autodesk.Revit.DB;
+﻿using Autodesk.Revit.DB;
 using Autodesk.Revit.DB.Architecture;
 using Autodesk.Revit.UI;
 using gb.Model.RevitHelper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Controls;
 
 namespace gb.Model.Creation
 {
@@ -23,8 +18,10 @@ namespace gb.Model.Creation
         /// <summary>
         /// ElementCreation is a class that is conserned with creating geomtry eg. floors,walls,celing etc...
         /// </summary>
-        /// <param document="room">The room from which to retrieve the boundary curves.</param>
-        /// <returns>ElementCreation instance.</returns>
+        /// <param name="document"> Revit document</param>
+        /// <param name="revitFilterCollectors"> revit Filter Collectors class instance </param>
+        /// <param name="generalHelperFunction"> general helper function class instance</param>
+        /// <returns>ElementCreation class instance.</returns>
         public ElementCreation(Document document, RevitFilterCollectors revitFilterCollectors, GeneralHelperFunction generalHelperFunction)
         {
             _document = document;
@@ -38,7 +35,7 @@ namespace gb.Model.Creation
         /// Creats floor from rooms base boundry curves.
         /// </summary>
         /// <param room="Room">The built-in category to filter.</param>
-        /// <returns>Floor floor.</returns>
+        /// <returns>Ilist of Floor floors.</returns>
         public Floor CreateRoomFloorFromParam(Room room)
         {            
 
@@ -86,7 +83,7 @@ namespace gb.Model.Creation
         /// Creats ceiling from rooms base boundry curves.
         /// </summary>
         /// <param room="Room">The built-in category to filter.</param>
-        /// <returns>Ceiling ceiling.</returns>
+        /// <returns>Ilist of Ceiling ceilings.</returns>
         public Ceiling createRoomCelinginFromParam(Room room)
         {
             // Retrieve the base boundary curves of the room
@@ -108,9 +105,10 @@ namespace gb.Model.Creation
             // Find the specific Ceiling type based on the parameter's value string
             CeilingType specificCeilingType = ceilingElment.FirstOrDefault(e => e.Name == ceilingTypeParam.AsValueString()) as CeilingType;
 
-
+            // collect ceiling height parameter
             Parameter ceilingHeightParam = room.LookupParameter("Ceiling Height");
 
+            // base case height 
             double ceilingHeightOfsset = 0.0;
 
             if (ceilingHeightParam != null && ceilingHeightParam.AsDouble() > 0)
@@ -122,13 +120,13 @@ namespace gb.Model.Creation
             {
                 transaction.Start();
 
-                // Create a new CeilingType to use for this ceiling with the specified height
-                CeilingType newCeilingType = specificCeilingType.Duplicate(specificCeilingType.Name + "_Temp") as CeilingType;
+                //// Create a new CeilingType to use for this ceiling with the specified height
+                //CeilingType newCeilingType = specificCeilingType.Duplicate(specificCeilingType.Name + "_Temp") as CeilingType;
 
-                if (newCeilingType != null)
-                {
-                    //newCeilingType.get_Parameter(BuiltInParameter.CEILING_HEIGHTABOVELEVEL_PARAM).Set(ceilingHeightOfsset);
-                }
+                //if (newCeilingType != null)
+                //{
+                //    //newCeilingType.get_Parameter(BuiltInParameter.CEILING_HEIGHTABOVELEVEL_PARAM).Set(ceilingHeightOfsset);
+                //}
                 
 
                 // Create the Ceiling using the specified Ceiling type and room level
@@ -148,7 +146,7 @@ namespace gb.Model.Creation
         /// Creats walls from rooms base boundry curves.
         /// </summary>
         /// <param room="Room">The built-in category to filter.</param>
-        /// <returns>iList<Wall> Wall.</returns>
+        /// <returns>iList of Wall Walls.</returns>
         public IList<Wall> createRoomWallFromParam(Room room)
         {
             // Retrieve the base boundary curves of the room
@@ -234,7 +232,7 @@ namespace gb.Model.Creation
              }
 
 
-            //this dose not worrrkkkkk ---------------------------------------------------------!_!_!_!_!_!
+            //this dose not worrrkkkkk ---------------------------------------------------------!_!_!_!_!_! future implemntation
 
             //using (Transaction transaction = new Transaction(_document, "Joining Walls"))
             //{

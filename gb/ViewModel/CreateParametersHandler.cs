@@ -9,6 +9,10 @@ using System.Threading.Tasks;
 
 namespace gb.ViewModel
 {
+    /// <summary>
+    /// Handles an external event to execute Parameters creation in a Revit document.
+    /// Implements the IExternalEventHandler interface.
+    /// </summary>
     internal class CreateParametersHandler : IExternalEventHandler
     {
         public void Execute(UIApplication app)

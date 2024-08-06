@@ -9,6 +9,10 @@ using System.Threading.Tasks;
 
 namespace gb.ViewModel
 {
+    /// <summary>
+    /// Handles an external event to execute Ceiling creation in a Revit document.
+    /// Implements the IExternalEventHandler interface.
+    /// </summary>
     public class CreateCeilingHandler : IExternalEventHandler
     {
         public void Execute(UIApplication app)

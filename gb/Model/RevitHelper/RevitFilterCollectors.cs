@@ -1,13 +1,7 @@
 ﻿using Autodesk.Revit.DB;
 using Autodesk.Revit.DB.Architecture;
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Data.Common;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace gb.Model.RevitHelper
 {
@@ -137,7 +131,7 @@ namespace gb.Model.RevitHelper
         /// Collects structural columns as elements from the document.
         /// </summary>
         /// <param name="elementType">True for element types, False for instances.</param>
-        /// <returns>List of structural columns.</returns>
+        /// <returns>List of structural columns element.</returns>
         public IList<Element> CollectStructuralColumnsElements(bool elementType)
         {
             return CollectElements(BuiltInCategory.OST_StructuralColumns, elementType);
@@ -147,7 +141,7 @@ namespace gb.Model.RevitHelper
         /// Collects structural columns Ids from the document.
         /// </summary>
         /// <param name="elementType">True for element types, False for instances.</param>
-        /// <returns>List of structural columns.</returns>
+        /// <returns>List of structural columns ids.</returns>
         public IList<ElementId> CollectStructuralColumnsElementsIds(bool elementType)
         {
             IList<ElementId> ids = new List<ElementId>();
@@ -166,7 +160,7 @@ namespace gb.Model.RevitHelper
         /// <summary>
         /// Collects rooms as elements from the document.
         /// </summary>
-        /// <returns>List of rooms.</returns>
+        /// <returns>List of rooms elements.</returns>
         public IList<Element> CollectRoomsElements()
         {
             var collector = new FilteredElementCollector(_document).OfCategory(BuiltInCategory.OST_Rooms);
@@ -176,7 +170,7 @@ namespace gb.Model.RevitHelper
         /// <summary>
         /// Collects rooms Ids from the document.
         /// </summary>
-        /// <returns>List of rooms.</returns>
+        /// <returns>List of rooms ids.</returns>
         public IList<ElementId> CollectRoomsElementsIds()
         {
             IList<ElementId> ids = new List<ElementId>();
@@ -210,13 +204,20 @@ namespace gb.Model.RevitHelper
 
         //----------------------------------Ceiling--------------------------------------//
 
-
+        /// <summary>
+        /// Collects rooms as elements from the document.
+        /// </summary>
+        /// <returns>List of Ceiling elements.</returns>
         public IList<Element> collectCeilingElements(bool elementType)
         {
             return CollectElements(BuiltInCategory.OST_Ceilings, elementType);
 
         }
 
+        /// <summary>
+        /// Collects rooms Ids from the document.
+        /// </summary>
+        /// <returns>List of Ceiling ids.</returns>
         public IList<ElementId> collectCeilingElementIds(bool elementType)
         {
             IList<ElementId> ids = new List<ElementId>();
@@ -229,7 +230,10 @@ namespace gb.Model.RevitHelper
             return ids;
         }
 
-
+        /// <summary>
+        /// Collects rooms from the document.
+        /// </summary>
+        /// <returns>List of Ceiling.</returns>
         public IList<Ceiling> collectCeiling(bool elementType)
         {
             IList<Ceiling> ceilings = new List<Ceiling>();
@@ -246,6 +250,10 @@ namespace gb.Model.RevitHelper
 
         //------------------------------Document------------------------------------//
 
+        /// <summary>
+        /// Collects rooms from the document.
+        /// </summary>
+        /// <returns>List of level.</returns>
         public IList<Level> collectLevels()
         {
             var collector = new FilteredElementCollector(_document)

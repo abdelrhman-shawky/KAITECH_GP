@@ -1,17 +1,9 @@
 ﻿using Autodesk.Revit.DB;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using gb.Model.RevitHelper;
 using gb.Model.Creation;
 using Autodesk.Revit.DB.Architecture;
 using Autodesk.Revit.UI;
-using Autodesk.Revit.ApplicationServices;
-using gb.Model.Data;
-using System.Windows.Controls;
-using System.Windows;
 
 namespace gb.Model
 {
@@ -27,6 +19,7 @@ namespace gb.Model
         /// Initializes a new instance of the TransactionManager class with the specified Revit document.
         /// </summary>
         /// <param name="document">The Revit document to perform operations on.</param>
+        /// <param name="uiApplication"> revit ui application</param>
         public TransactionManager(Document document, UIApplication uiApplication)
         {
             _uiApplication = uiApplication;

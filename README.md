@@ -2,9 +2,18 @@
 
 Graduation Project for BIM Development Diploma with KAITECH
 
-## Revit Room Finishing Add-In
+**Developer:** Abdelrhman Shawky Ahmed  
+**Round:** 6  
+**Discipline:** Architecture  
+**LinkedIn:** [Abdelrhman Shawky Ahmed](https://www.linkedin.com/in/abdelrhman-shawky-457712125/)  
+**Add-in Name:** Room Finishing  
+**Target Discipline:** Architecture  
+**Compatibility:** Revit 2020 to Revit 2024  
+**Discussion Link:** [YourDiscussionVideoLinkOnKAITECHFacebookPage](YourDiscussionVideoLinkOnKAITECHFacebookPage)  
 
-This Revit add-in automates the process of setting parameters and placing floors, ceilings, and walls for room finishing.
+## Description
+
+This Revit add-in automates the process of placing floors, ceilings, and walls for room finishing.
 
 ## Features
 
@@ -53,7 +62,7 @@ Click the `Place Walls` button to automatically place walls in the rooms.
 
 ## Requirements
 
-- **Revit Version**: Ensure you are using a compatible version of Revit.
+- **Revit Version**: Ensure you are using a compatible version of Revit (2020 to 2024).
 - **.NET Framework**: Ensure you have the appropriate .NET Framework installed.
 
 ## Troubleshooting
@@ -63,7 +72,7 @@ Click the `Place Walls` button to automatically place walls in the rooms.
 
 ## Support
 
-If you encounter any issues or have questions, please contact [Abdelrhman Shawky/abdelrhman.shawky156@gmail.com].
+If you encounter any issues or have questions, please contact Abdelrhman Shawky Ahmed via [LinkedIn](https://www.linkedin.com/in/abdelrhman-shawky-457712125/).
 
 ## License
 

@@ -9,7 +9,6 @@ Graduation Project for BIM Development Diploma with KAITECH
 **Add-in Name:** Room Finishing  
 **Target Discipline:** Architecture  
 **Compatibility:** Revit 2020 to Revit 2024  
-**Discussion Link:** [YourDiscussionVideoLinkOnKAITECHFacebookPage](YourDiscussionVideoLinkOnKAITECHFacebookPage)  
 
 ## Description
 
@@ -24,7 +23,7 @@ This Revit add-in automates the process of placing floors, ceilings, and walls f
 
 ## Installation
 
-1. **Download the Add-In**: [Link to your add-in file]
+1. **Download the Add-In**: [[Download Link](https://github.com/abdelrhman-shawky/KAITECH_GP?tab=readme-ov-file)]
 
 2. **Extract Files**: Extract the downloaded ZIP file to a directory of your choice.
 
@@ -40,25 +39,25 @@ This Revit add-in automates the process of placing floors, ceilings, and walls f
 
 Click the `Set Parameters` button to assign the necessary parameters to the rooms.
 
-![Set Parameters](images/set_parameters.png)
+![set Parameters](https://github.com/user-attachments/assets/2b125e39-ca39-4105-905f-ee7f7a5d73c0)
 
 ### Place Floors
 
 Click the `Place Floors` button to automatically place floors in the rooms.
 
-![Place Floors](images/place_floors.png)
+![Place Floors](https://github.com/user-attachments/assets/98cac0bc-5b9e-44aa-bb0c-4f602d630dda)
 
 ### Place Ceilings
 
 Click the `Place Ceilings` button to automatically place ceilings in the rooms.
 
-![Place Ceilings](images/place_ceilings.png)
+![Place Ceilings](https://github.com/user-attachments/assets/fa76c251-4116-41e5-a353-e3e12e9472cc)
 
 ### Place Walls
 
 Click the `Place Walls` button to automatically place walls in the rooms.
 
-![Place Walls](images/place_walls.png)
+![Place Walls](https://github.com/user-attachments/assets/57ef7c8d-35a8-4838-8f11-f06f7c571ca4)
 
 ## Requirements
 

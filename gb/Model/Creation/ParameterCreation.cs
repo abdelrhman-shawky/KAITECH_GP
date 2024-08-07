@@ -19,6 +19,8 @@ namespace gb.Model.Creation
 
         }
 
+
+        #region CreateOrUpdateSharedParameter for revit 2022 +
         /// <summary>
         /// Creates or updates a shared parameter.
         /// </summary>
@@ -33,7 +35,7 @@ namespace gb.Model.Creation
             string definitionName,
             ForgeTypeId specTypeId,
             ForgeTypeId groupTypeId,
-            bool visibelityState=true)
+            bool visibelityState = true)
         {
 
             // Open the shared parameter file from the application.
@@ -41,7 +43,7 @@ namespace gb.Model.Creation
 
 
             // If the shared parameter file is missing, display a task dialog with instructions.
-            if (definitionFile == null )
+            if (definitionFile == null)
             {
                 TaskDialog.Show("Shared Parameter File Missing",
                     "The shared parameter file has no path." +
@@ -51,7 +53,7 @@ namespace gb.Model.Creation
             }
 
             // Retrieve the groups of definitions from the shared parameter file.
-            DefinitionGroups definitionGroups =definitionFile.Groups;
+            DefinitionGroups definitionGroups = definitionFile.Groups;
 
             // Retrieve the specific group of definitions by name.
             // If the group does not exist, create it.
@@ -71,12 +73,12 @@ namespace gb.Model.Creation
             if (existingDefinition != null)
             {
                 // Start a transaction to remove the existing parameter.
-                using (Transaction transaction = new Transaction(_document,"Remove exisiting paramter"))
+                using (Transaction transaction = new Transaction(_document, "Remove exisiting paramter"))
                 {
                     transaction.Start();
 
                     // Get the binding map of the document and remove the existing definition.
-                    BindingMap bindingMap =_document.ParameterBindings;                    
+                    BindingMap bindingMap = _document.ParameterBindings;
                     bindingMap.Remove(existingDefinition);
                     transaction.Commit(); // Commit the transaction to apply changes.
                 }
@@ -96,17 +98,17 @@ namespace gb.Model.Creation
 
             // Create a new category set and add the specified category to it.
             CategorySet categorySet = _application.Create.NewCategorySet();
-          
-            categorySet.Insert(Category.GetCategory(_document,builtInCategory));
+
+            categorySet.Insert(Category.GetCategory(_document, builtInCategory));
 
             // Create an instance binding for the new parameter.
-            InstanceBinding instanceBinding =_application
+            InstanceBinding instanceBinding = _application
                 .Create.NewInstanceBinding(categorySet);
 
             // Start a transaction to create the new parameter and bind it to the category.
             using (Transaction transaction = new Transaction(_document, "Creating Parameters"))
             {
-                transaction .Start();
+                transaction.Start();
 
                 // Insert the new parameter binding into the document's parameter bindings.
                 _document.ParameterBindings.Insert(
@@ -117,8 +119,114 @@ namespace gb.Model.Creation
                 transaction.Commit(); // Commit the transaction to apply changes.
             }
         }
+        #endregion
 
 
+
+        #region CreateOrUpdateSharedParameterOldVersions for revit 2021 -
+        /// <summary>
+        /// Creates or updates a shared parameter.
+        /// </summary>
+        /// <param name="groupName">The group name for the parameter.</param>
+        /// <param name="definitionName">The name of the parameter definition.</param>
+        /// <param name="builtInCategory">the Built in category (e.g.,Wall,Room,Floor,....)</param>
+        /// <param name="ParameterType">The type of the parameter (e.g., Boolean).</param>
+        /// <param name="BuiltInParameterGroup">The group type ID for the parameter, (e.g., Identity data, Phasing)</param>
+        /// <param name="visibilityState">Visibility state of the parameter.</param>
+        //private void CreateOrUpdateSharedParameterOldVersions(string groupName,
+        //  BuiltInCategory builtInCategory,
+        //  string definitionName,
+        //  ParameterType parameterType,
+        //  BuiltInParameterGroup builtInParameterGroup,
+        //  bool visibelityState = true)
+        //{
+
+        //    // Open the shared parameter file from the application.
+        //    DefinitionFile definitionFile = _application.OpenSharedParameterFile();
+
+
+        //    // If the shared parameter file is missing, display a task dialog with instructions.
+        //    if (definitionFile == null)
+        //    {
+        //        TaskDialog.Show("Shared Parameter File Missing",
+        //            "The shared parameter file has no path." +
+        //            " Please go to the Manage tab, open Shared Parameters," +
+        //            " and assign a shared parameter file.");
+        //        return; // Exit the function as there's no shared parameter file to work with.
+        //    }
+
+        //    // Retrieve the groups of definitions from the shared parameter file.
+        //    DefinitionGroups definitionGroups = definitionFile.Groups;
+
+        //    // Retrieve the specific group of definitions by name.
+        //    // If the group does not exist, create it.
+        //    DefinitionGroup definitionGroup = definitionGroups.get_Item(groupName);
+
+        //    //string groupName = "Room";
+
+        //    if (definitionGroup == null)
+        //    {
+        //        definitionGroup = definitionGroups.Create(groupName);
+        //    }
+
+        //    // Retrieve the existing definition from the group by name.
+        //    // If it exists, remove it.
+        //    Definition existingDefinition = definitionGroup.Definitions.get_Item(definitionName);
+
+        //    if (existingDefinition != null)
+        //    {
+        //        // Start a transaction to remove the existing parameter.
+        //        using (Transaction transaction = new Transaction(_document, "Remove exisiting paramter"))
+        //        {
+        //            transaction.Start();
+
+        //            // Get the binding map of the document and remove the existing definition.
+        //            BindingMap bindingMap = _document.ParameterBindings;
+        //            bindingMap.Remove(existingDefinition);
+        //            transaction.Commit(); // Commit the transaction to apply changes.
+        //        }
+
+        //    }
+
+        //    // Create options for a new external definition with the specified name and type.
+        //    // Set the visibility state of the new definition.
+        //    ExternalDefinitionCreationOptions options = new ExternalDefinitionCreationOptions(definitionName, parameterType)
+        //    {
+        //        Visible = visibelityState
+        //    };
+
+        //    // Create the definition, either using the existing one or creating a new one.
+        //    Definition definition = existingDefinition ?? definitionGroup.Definitions.Create(options);
+
+
+        //    // Create a new category set and add the specified category to it.
+        //    CategorySet categorySet = _application.Create.NewCategorySet();
+
+        //    categorySet.Insert(Category.GetCategory(_document, builtInCategory));
+
+        //    // Create an instance binding for the new parameter.
+        //    InstanceBinding instanceBinding = _application
+        //        .Create.NewInstanceBinding(categorySet);
+
+        //    // Start a transaction to create the new parameter and bind it to the category.
+        //    using (Transaction transaction = new Transaction(_document, "Creating Parameters"))
+        //    {
+        //        transaction.Start();
+
+        //        // Insert the new parameter binding into the document's parameter bindings.
+        //        _document.ParameterBindings.Insert(
+        //            definition,
+        //            instanceBinding,
+        //            builtInParameterGroup);
+
+        //        transaction.Commit(); // Commit the transaction to apply changes.
+        //    }
+        //}
+        #endregion
+
+
+
+        #region CreateOrUpdateRoomParameter for revit 2022 +
         /// <summary>
         /// Creates or updates a room parameter.
         /// </summary>
@@ -126,16 +234,38 @@ namespace gb.Model.Creation
         /// <param name="specTypeId">The type of the room parameter (e.g., boolean).</param>
         /// <param name="groupTypeId">The group type ID for the parameter, (e.g., Identity data, Phasing)</param>
         /// <param name="visibilityState">Visibility state of the parameter.</param>
-        public void CreateOrUpdateRoomParameter(string definitionName,ForgeTypeId specTypeId,ForgeTypeId groupTypeId,bool visibilityState)
+        public void CreateOrUpdateRoomParameter(string definitionName, ForgeTypeId specTypeId, ForgeTypeId groupTypeId, bool visibilityState)
         {
             // Calls the helper method to create or update the shared parameter.
-            CreateOrUpdateSharedParameter("Room",BuiltInCategory.OST_Rooms, definitionName, specTypeId, groupTypeId, visibilityState);
+
+            CreateOrUpdateSharedParameter("Room", BuiltInCategory.OST_Rooms, definitionName, specTypeId, groupTypeId, visibilityState);//for revit 2022+
+
         }
+        #endregion
+
+
+        #region CreateOrUpdateRoomParameterOldVersion for revit 2021 -
+        /// <summary>
+        /// Creates or updates a room parameter.
+        /// </summary>
+        /// <param name="definitionName">The name of the room parameter.</param>
+        /// <param name="parameterType">The type of the room parameter (e.g., boolean).</param>
+        /// <param name="builtInParameterGroup">The group type ID for the parameter, (e.g., Identity data, Phasing)</param>
+        /// <param name="visibilityState">Visibility state of the parameter.</param>
+        //public void CreateOrUpdateRoomParameterOldVersion(string definitionName, ParameterType parameterType, BuiltInParameterGroup builtInParameterGroup, bool visibilityState)
+        //{
+        //    // Calls the helper method to create or update the shared parameter.
+
+        //    CreateOrUpdateSharedParameterOldVersions("Room", BuiltInCategory.OST_Rooms, definitionName, parameterType, builtInParameterGroup, visibilityState);
+
+        //}
+        #endregion 
 
 
 
 
-        
+
+
 
     }
 }

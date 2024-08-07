@@ -47,7 +47,10 @@ namespace gb.Model
                 // Create floors for each room
                 foreach (Room room in rooms)
                 {
-                    elementCreation.CreateRoomFloorFromParam(room);
+                    if (room.LookupParameter("Unique").AsInteger() == 0)
+                    {
+                        elementCreation.CreateRoomFloorFromParam(room);
+                    }
                 }
 
             }
@@ -76,7 +79,11 @@ namespace gb.Model
                 // Create Ceiling for each room
                 foreach (Room room in rooms)
                 {
-                    elementCreation.createRoomCelinginFromParam(room);
+                    if (room.LookupParameter("Unique").AsInteger() == 0)
+                    {
+                        elementCreation.createRoomCelinginFromParam(room); // for revit 2022+
+                        //elementCreation.creatRoomCeilingFromParamOld(room); // for revit 2021 -
+                    }
                 }
 
             }
@@ -106,7 +113,10 @@ namespace gb.Model
                 // Create Wall for each room
                 foreach (Room room in rooms)
                 {
-                    elementCreation.createRoomWallFromParam(room);
+                    if (room.LookupParameter("Unique").AsInteger() == 0)
+                    {
+                        elementCreation.createRoomWallFromParam(room);
+                    }
                 }
 
             }
@@ -151,26 +161,37 @@ namespace gb.Model
 
             foreach (string param in stringParameters)
             {
-                parameterCreation.CreateOrUpdateRoomParameter(param, SpecTypeId.String.Text, GroupTypeId.IdentityData, true);
+                parameterCreation.CreateOrUpdateRoomParameter(param, SpecTypeId.String.Text, GroupTypeId.IdentityData, true); // revit 2022+
+
+                //parameterCreation.CreateOrUpdateRoomParameterOldVersion(param,ParameterType.Text,BuiltInParameterGroup.PG_IDENTITY_DATA, true); // revit 2021-
+                
             }
 
             foreach (string param in boolParameters)
             {
-                parameterCreation.CreateOrUpdateRoomParameter(param, SpecTypeId.Boolean.YesNo, GroupTypeId.IdentityData, true);
+                parameterCreation.CreateOrUpdateRoomParameter(param, SpecTypeId.Boolean.YesNo, GroupTypeId.IdentityData, true);// revit 2022+
+                //parameterCreation.CreateOrUpdateRoomParameterOldVersion(param, ParameterType.YesNo, BuiltInParameterGroup.PG_IDENTITY_DATA, true); //revit 2021-
             }
+
 
             //foreach (string param in doubleParameters)
             //{
-            //    parameterCreation.CreateOrUpdateRoomParameter(param, SpecTypeId.Length, GroupTypeId.IdentityData, true);
+            //    parameterCreation.CreateOrUpdateRoomParameter(param, SpecTypeId.Length, GroupTypeId.IdentityData, true);// revit 2022+
+            //    parameterCreation.CreateOrUpdateRoomParameterOldVersion(param, ParameterType.Length, BuiltInParameterGroup.PG_IDENTITY_DATA, true);// revit 2021 -
+
             //}
 
 
 
             //-invis parameters
-            parameterCreation.CreateOrUpdateRoomParameter(furnishedState, SpecTypeId.Boolean.YesNo, GroupTypeId.IdentityData, false); // when everything is done
+            parameterCreation.CreateOrUpdateRoomParameter(furnishedState, SpecTypeId.Boolean.YesNo, GroupTypeId.IdentityData, false); // when everything is done  //revit 2022+
+            //parameterCreation.CreateOrUpdateRoomParameterOldVersion(furnishedState, ParameterType.YesNo, BuiltInParameterGroup.PG_IDENTITY_DATA, false); //revit 2021-
 
-            parameterCreation.CreateOrUpdateRoomParameter(isParameterExsists, SpecTypeId.Boolean.YesNo, GroupTypeId.IdentityData, false); //all the rooms has the parameters
+
+            parameterCreation.CreateOrUpdateRoomParameter(isParameterExsists, SpecTypeId.Boolean.YesNo, GroupTypeId.IdentityData, false); //all the rooms has the parameters //revit 2022+
+            //parameterCreation.CreateOrUpdateRoomParameterOldVersion(isParameterExsists, ParameterType.YesNo, BuiltInParameterGroup.PG_IDENTITY_DATA, false); //revit 2021-
         }
+
       
     }
     

@@ -1,10 +1,12 @@
 ﻿using Autodesk.Revit.DB;
 using Autodesk.Revit.DB.Architecture;
+using Autodesk.Revit.DB.Structure;
 using Autodesk.Revit.UI;
 using gb.Model.RevitHelper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows.Controls;
 
 namespace gb.Model.Creation
 {
@@ -57,9 +59,16 @@ namespace gb.Model.Creation
 
 
             // Find the specific floor type based on the parameter's value string
-            Element specificFloorType = FloorElment.FirstOrDefault(e => e.Name ==floorTypeParam.AsValueString());
+            Element specificFloorType = FloorElment.FirstOrDefault(e => e.Name ==floorTypeParam.AsValueString());//this is for revit 2022+
+
+            //for revit 2021 -
+            #region 
+
+            FloorType specificFloorTypeForOldRvt = _GeneralHelperFunction.GetFloorType(specificFloorType, floorTypeParam.AsValueString());
 
 
+            CurveArray curveArray = _GeneralHelperFunction.ConvertCurveLoopListToCurveArray(curves);
+            #endregion
 
             // Start a transaction to create the floor
             using (Transaction transaction = new Transaction(_document, "Create Floor"))
@@ -67,7 +76,11 @@ namespace gb.Model.Creation
                 transaction.Start();
 
                 // Create the floor using the specified floor type and room level
-                Floor myFloor = Floor.Create(_document, curves, specificFloorType.Id, room.LevelId);
+
+
+                Floor myFloor = Floor.Create(_document, curves, specificFloorType.Id, room.LevelId); //this is for revit 2022+
+                //Floor myFloor = _document.Create.NewFloor(curveArray, specificFloorTypeForOldRvt, room.Level, false); //this is for revit 2021 -
+
 
                 // Commit the transaction
                 transaction.Commit();
@@ -79,6 +92,8 @@ namespace gb.Model.Creation
 
         }
 
+
+        #region createRoomCelinginFromParam for revit 2022+
         /// <summary>
         /// Creats ceiling from rooms base boundry curves.
         /// </summary>
@@ -105,21 +120,30 @@ namespace gb.Model.Creation
             // Find the specific Ceiling type based on the parameter's value string
             CeilingType specificCeilingType = ceilingElment.FirstOrDefault(e => e.Name == ceilingTypeParam.AsValueString()) as CeilingType;
 
+
+
             // collect ceiling height parameter
             Parameter ceilingHeightParam = room.LookupParameter("Ceiling Height");
+
+            
+
+
 
             // base case height 
             double ceilingHeightOfsset = 0.0;
 
             if (ceilingHeightParam != null && ceilingHeightParam.AsDouble() > 0)
             {
-                ceilingHeightOfsset=ceilingHeightParam.AsDouble();
+                ceilingHeightOfsset = ceilingHeightParam.AsDouble();
             }
+
+
 
             using (Transaction transaction = new Transaction(_document, "Create ceiling"))
             {
                 transaction.Start();
 
+                //-----------------------------------------------//
                 //// Create a new CeilingType to use for this ceiling with the specified height
                 //CeilingType newCeilingType = specificCeilingType.Duplicate(specificCeilingType.Name + "_Temp") as CeilingType;
 
@@ -127,19 +151,122 @@ namespace gb.Model.Creation
                 //{
                 //    //newCeilingType.get_Parameter(BuiltInParameter.CEILING_HEIGHTABOVELEVEL_PARAM).Set(ceilingHeightOfsset);
                 //}
-                
+                //-----------------------------------------------//
+
 
                 // Create the Ceiling using the specified Ceiling type and room level
-                Ceiling myCeiling = Ceiling.Create(_document, curves, specificCeilingType.Id, room.LevelId);
+                Ceiling myCeiling = Ceiling.Create(_document, curves, specificCeilingType.Id, room.LevelId); //revit 2022 +
+
+
+
 
                 // Commit the transaction
+
                 transaction.Commit();
+
+
 
                 // Return the created Ceiling
                 return myCeiling;
             }
 
         }
+        #endregion
+
+
+        #region creatRoomCeilingFromParamOld for revit 2021 -
+        /// <summary>
+        /// Creats ceiling from rooms base boundry curves.
+        /// </summary>
+        /// <param room="Room">The built-in category to filter.</param>
+        /// <returns>Ilist of Ceiling ceilings.</returns>
+        //public void creatRoomCeilingFromParamOld(Room room)
+        //{
+
+        //    // Retrieve the base boundary curves of the room
+        //    IList<CurveLoop> curves = _GeneralHelperFunction.GetRoomBaseCurve(room);
+
+        //    // Lookup the "Ceiling Finish" parameter in the room
+        //    Parameter ceilingTypeParam = room.LookupParameter("Ceiling Finish");
+
+        //    // check if the Ceiling finis is null or not spicefied
+        //    if (ceilingTypeParam.AsValueString() == null)
+        //    {
+        //        TaskDialog.Show("parameteris missing", "ceiling Finish parameter is missing");
+
+        //    }
+
+        //    // Collect all Ceiling elements
+        //    IList<Element> ceilingElment = _filterCollectors.collectCeilingElements(true);
+
+        //    // Find the specific Ceiling type based on the parameter's value string
+        //    CeilingType specificCeilingType = ceilingElment.FirstOrDefault(e => e.Name == ceilingTypeParam.AsValueString()) as CeilingType;
+
+
+
+        //    // collect ceiling height parameter
+        //    Parameter ceilingHeightParam = room.LookupParameter("Ceiling Height");
+
+
+
+
+        //    // base case height 
+        //    double ceilingHeightOfsset = 0.0;
+
+        //    if (ceilingHeightParam != null && ceilingHeightParam.AsDouble() > 0)
+        //    {
+        //        ceilingHeightOfsset = ceilingHeightParam.AsDouble();
+        //    }
+
+
+
+        //    //for revit 2021 -
+        //    #region
+
+        //    XYZ location = _GeneralHelperFunction.GetCentroid(curves);
+
+        //    FamilySymbol familySymbol = new FilteredElementCollector(_document)
+        //   .OfClass(typeof(FamilySymbol))
+        //   .FirstOrDefault(e => e.Name == ceilingHeightParam.AsValueString()) as FamilySymbol;
+
+        //    #endregion
+
+
+
+        //    using (Transaction transaction = new Transaction(_document, "Create ceiling"))
+        //    {
+        //        transaction.Start();
+
+        //        //-----------------------------------------------//
+        //        //// Create a new CeilingType to use for this ceiling with the specified height
+        //        //CeilingType newCeilingType = specificCeilingType.Duplicate(specificCeilingType.Name + "_Temp") as CeilingType;
+
+        //        //if (newCeilingType != null)
+        //        //{
+        //        //    //newCeilingType.get_Parameter(BuiltInParameter.CEILING_HEIGHTABOVELEVEL_PARAM).Set(ceilingHeightOfsset);
+        //        //}
+        //        //-----------------------------------------------//
+
+
+        //        // Create the Ceiling using the specified Ceiling type and room level
+
+
+        //        FamilyInstance familyInstance = _document.Create.NewFamilyInstance(location, familySymbol, StructuralType.NonStructural);
+
+
+        //        // Commit the transaction
+
+        //        transaction.Commit();
+
+
+
+        //        // Return the created Ceiling
+
+
+        //    }
+
+        //}
+        #endregion
 
 
         /// <summary>

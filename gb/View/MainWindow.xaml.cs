@@ -128,27 +128,12 @@ namespace gb.View
             // Iterate over each room in the collected rooms.
             foreach (Room room in rooms)
             {
-                // Get the level ID and the corresponding level element.
-                ElementId levelId = room.LevelId;
-                Level level = document.GetElement(levelId) as Level;
-                string levelName = level?.Name ?? "Unknown"; // Default to "Unknown" if the level is null.
-
-                // Lookup the "Unique" parameter for the room.
-                Parameter uniqueParam = room.LookupParameter("Unique");
-                bool isUnique = uniqueParam != null && uniqueParam.AsInteger() == 1; // Check if the parameter is set to 1.
-
                 // Create a new RoomData object and populate it with room details.
-                RoomData roomData = new RoomData
-                {
-                    roomName = room.get_Parameter(BuiltInParameter.ROOM_NAME).AsValueString(),
-                    roomNumber = room.get_Parameter(BuiltInParameter.ROOM_NUMBER).AsValueString(),
-                    roomId = room.Id.ToString(),
-                    roomLevel = levelName,
-                    isUnique = isUnique,
-                };
+                RoomData roomData = new RoomData(room);
 
                 // Add the RoomData object to the collection.
                 roomDataList.Add(roomData);
+
             }
 
             // Set the ItemsSource of the RoomsDataGrid to the populated collection.

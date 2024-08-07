@@ -2,6 +2,7 @@
 using Autodesk.Revit.DB.Architecture;
 using System.Collections.Generic;
 using System.Linq;
+using System; // revit 2021 & less
 
 namespace gb.Model.RevitHelper
 {
@@ -165,6 +166,104 @@ namespace gb.Model.RevitHelper
             }
 
             return false;
+        }
+
+
+
+        //---------------for Revit 2021 & less-----------------------------------//
+        public FloorType GetFloorType(Element element, string floorTypeName)
+        {
+            // Ensure the input element is not null
+            if (element == null)
+            {
+                throw new ArgumentNullException(nameof(element));
+            }
+
+            // Ensure the input floor type name is not null or empty
+            if (string.IsNullOrEmpty(floorTypeName))
+            {
+                throw new ArgumentNullException(nameof(floorTypeName));
+            }
+
+            // Cast the element to an ElementType
+            var elementType = element as ElementType;
+
+            // Check if the element is a FloorType and if its name matches the provided floor type name
+            if (elementType is FloorType floorType && floorType.Name == floorTypeName)
+            {
+                return floorType;
+            }
+
+            // Return null if no matching FloorType is found
+            return null;
+        }
+
+
+
+        public  CurveArray ConvertCurveLoopListToCurveArray(IList<CurveLoop> curveLoopList)
+        {
+            // Ensure the input IList<CurveLoop> is not null
+            if (curveLoopList == null)
+            {
+                throw new ArgumentNullException(nameof(curveLoopList));
+            }
+
+            // Create a new CurveArray
+            CurveArray curveArray = new CurveArray();
+
+            // Iterate through the CurveLoop list
+            foreach (CurveLoop curveLoop in curveLoopList)
+            {
+                // Ensure the CurveLoop is not null
+                if (curveLoop != null)
+                {
+                    // Add curves from the CurveLoop to the CurveArray
+                    foreach (Curve curve in curveLoop)
+                    {
+                        curveArray.Append(curve);
+                    }
+                }
+            }
+
+            return curveArray;
+        }
+
+
+        public  XYZ GetCentroid(IList<CurveLoop> curveLoops)
+        {
+            if (curveLoops == null || curveLoops.Count == 0)
+            {
+                throw new ArgumentException("CurveLoops list is null or empty.");
+            }
+
+            List<XYZ> points = new List<XYZ>();
+
+            foreach (CurveLoop curveLoop in curveLoops)
+            {
+                foreach (Curve curve in curveLoop)
+                {
+                    // Sample points along the curve. Adjust the sampling density as needed.
+                    double step = 0.1; // Sample every 0.1 units along the curve
+                    for (double t = 0; t <= 1; t += step)
+                    {
+                        points.Add(curve.Evaluate(t, true));
+                    }
+                }
+            }
+
+            if (points.Count == 0)
+            {
+                throw new InvalidOperationException("No points found to calculate centroid.");
+            }
+
+            // Calculate the centroid
+            XYZ centroid = new XYZ(
+                points.Average(p => p.X),
+                points.Average(p => p.Y),
+                points.Average(p => p.Z)
+            );
+
+            return centroid;
         }
     }
 }

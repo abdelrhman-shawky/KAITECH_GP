@@ -3,12 +3,24 @@
   "WorkspaceRootPath": "C:\\Users\\eng1\\Desktop\\Revit2024_Addon\\KAITECH_GP\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{262D5BCB-BAE5-4CC3-B9A6-A4780366CF9D}|gb\\gb.csproj|c:\\users\\eng1\\desktop\\revit2024_addon\\kaitech_gp\\gb\\model\\revithelper\\generalhelperfunction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{262D5BCB-BAE5-4CC3-B9A6-A4780366CF9D}|gb\\gb.csproj|solutionrelative:gb\\model\\revithelper\\generalhelperfunction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{262D5BCB-BAE5-4CC3-B9A6-A4780366CF9D}|gb\\gb.csproj|c:\\users\\eng1\\desktop\\revit2024_addon\\kaitech_gp\\gb\\view\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{262D5BCB-BAE5-4CC3-B9A6-A4780366CF9D}|gb\\gb.csproj|solutionrelative:gb\\view\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{262D5BCB-BAE5-4CC3-B9A6-A4780366CF9D}|gb\\gb.csproj|c:\\users\\eng1\\desktop\\revit2024_addon\\kaitech_gp\\gb\\viewmodel\\mainviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{262D5BCB-BAE5-4CC3-B9A6-A4780366CF9D}|gb\\gb.csproj|solutionrelative:gb\\viewmodel\\mainviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{262D5BCB-BAE5-4CC3-B9A6-A4780366CF9D}|gb\\gb.csproj|c:\\users\\eng1\\desktop\\revit2024_addon\\kaitech_gp\\gb\\model\\creation\\elementcreation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{262D5BCB-BAE5-4CC3-B9A6-A4780366CF9D}|gb\\gb.csproj|solutionrelative:gb\\model\\creation\\elementcreation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{262D5BCB-BAE5-4CC3-B9A6-A4780366CF9D}|gb\\gb.csproj|c:\\users\\eng1\\desktop\\revit2024_addon\\kaitech_gp\\gb\\model\\data\\roomdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{262D5BCB-BAE5-4CC3-B9A6-A4780366CF9D}|gb\\gb.csproj|solutionrelative:gb\\model\\data\\roomdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{262D5BCB-BAE5-4CC3-B9A6-A4780366CF9D}|gb\\gb.csproj|c:\\users\\eng1\\desktop\\revit2024_addon\\kaitech_gp\\gb\\view\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{262D5BCB-BAE5-4CC3-B9A6-A4780366CF9D}|gb\\gb.csproj|solutionrelative:gb\\view\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{262D5BCB-BAE5-4CC3-B9A6-A4780366CF9D}|gb\\gb.csproj|c:\\users\\eng1\\desktop\\revit2024_addon\\kaitech_gp\\gb\\model\\transactionmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{262D5BCB-BAE5-4CC3-B9A6-A4780366CF9D}|gb\\gb.csproj|solutionrelative:gb\\model\\transactionmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,7 +30,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 147,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -26,28 +38,66 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "GeneralHelperFunction.cs",
-              "DocumentMoniker": "C:\\Users\\eng1\\Desktop\\Revit2024_Addon\\KAITECH_GP\\gb\\Model\\RevitHelper\\GeneralHelperFunction.cs",
-              "RelativeDocumentMoniker": "gb\\Model\\RevitHelper\\GeneralHelperFunction.cs",
-              "ToolTip": "C:\\Users\\eng1\\Desktop\\Revit2024_Addon\\KAITECH_GP\\gb\\Model\\RevitHelper\\GeneralHelperFunction.cs",
-              "RelativeToolTip": "gb\\Model\\RevitHelper\\GeneralHelperFunction.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAhAAAA",
+              "DocumentIndex": 2,
+              "Title": "RoomData.cs",
+              "DocumentMoniker": "C:\\Users\\eng1\\Desktop\\Revit2024_Addon\\KAITECH_GP\\gb\\Model\\Data\\RoomData.cs",
+              "RelativeDocumentMoniker": "gb\\Model\\Data\\RoomData.cs",
+              "ToolTip": "C:\\Users\\eng1\\Desktop\\Revit2024_Addon\\KAITECH_GP\\gb\\Model\\Data\\RoomData.cs",
+              "RelativeToolTip": "gb\\Model\\Data\\RoomData.cs",
+              "ViewState": "AQIAAA0AAAAAAAAAAIA8wCgAAAAtAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-06T12:39:45.85Z",
+              "WhenOpened": "2024-08-07T12:16:19.104Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\eng1\\Desktop\\Revit2024_Addon\\KAITECH_GP\\gb\\View\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "gb\\View\\MainWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\eng1\\Desktop\\Revit2024_Addon\\KAITECH_GP\\gb\\View\\MainWindow.xaml.cs",
+              "RelativeToolTip": "gb\\View\\MainWindow.xaml.cs",
+              "ViewState": "AQIAAFAAAAAAAAAAAAAmwIEAAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-07T12:12:35.248Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\eng1\\Desktop\\Revit2024_Addon\\KAITECH_GP\\gb\\View\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "gb\\View\\MainWindow.xaml",
+              "ToolTip": "C:\\Users\\eng1\\Desktop\\Revit2024_Addon\\KAITECH_GP\\gb\\View\\MainWindow.xaml",
+              "RelativeToolTip": "gb\\View\\MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-08-07T12:12:29.175Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "MainViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\eng1\\Desktop\\Revit2024_Addon\\KAITECH_GP\\gb\\ViewModel\\MainViewModel.cs",
-              "RelativeDocumentMoniker": "gb\\ViewModel\\MainViewModel.cs",
-              "ToolTip": "C:\\Users\\eng1\\Desktop\\Revit2024_Addon\\KAITECH_GP\\gb\\ViewModel\\MainViewModel.cs",
-              "RelativeToolTip": "gb\\ViewModel\\MainViewModel.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAAEIAAAAAAAAA",
+              "Title": "ElementCreation.cs",
+              "DocumentMoniker": "C:\\Users\\eng1\\Desktop\\Revit2024_Addon\\KAITECH_GP\\gb\\Model\\Creation\\ElementCreation.cs",
+              "RelativeDocumentMoniker": "gb\\Model\\Creation\\ElementCreation.cs",
+              "ToolTip": "C:\\Users\\eng1\\Desktop\\Revit2024_Addon\\KAITECH_GP\\gb\\Model\\Creation\\ElementCreation.cs",
+              "RelativeToolTip": "gb\\Model\\Creation\\ElementCreation.cs",
+              "ViewState": "AQIAALEAAAAAAAAAAAAEwB0BAABPAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-06T12:11:43Z",
+              "WhenOpened": "2024-08-07T11:30:43.503Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "TransactionManager.cs",
+              "DocumentMoniker": "C:\\Users\\eng1\\Desktop\\Revit2024_Addon\\KAITECH_GP\\gb\\Model\\TransactionManager.cs",
+              "RelativeDocumentMoniker": "gb\\Model\\TransactionManager.cs",
+              "ToolTip": "C:\\Users\\eng1\\Desktop\\Revit2024_Addon\\KAITECH_GP\\gb\\Model\\TransactionManager.cs",
+              "RelativeToolTip": "gb\\Model\\TransactionManager.cs",
+              "ViewState": "AQIAABYAAAAAAAAAAAA1wC8AAAAsAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-07T07:36:45.105Z",
               "EditorCaption": ""
             }
           ]

@@ -287,10 +287,11 @@
         <ScrollViewer Grid.Row="1" Margin="0,10,26,10" Background="#2C3E50" Grid.Column="1">
             <StackPanel>
                 <TextBlock Text="List of Rooms" FontSize="18" FontWeight="Bold" Foreground="#ECF0F1" Margin="10"/>
+                
                 <DataGrid x:Name="RoomsDataGrid" AutoGenerateColumns="False" CanUserAddRows="False"
-                  VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto"
+                  VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" 
                   Height="Auto" Background="#34495E" BorderBrush="#1ABC9C" BorderThickness="1"
-                  RowHeight="30">
+                  IsReadOnly="False" RowHeight="30">
                     <!-- Set row height -->
                     <DataGrid.ColumnHeaderStyle>
                         <Style TargetType="DataGridColumnHeader">
@@ -320,11 +321,15 @@
                         </Style>
                     </DataGrid.ColumnHeaderStyle>
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Name" Binding="{Binding roomName, Mode=OneWay}" Width="*"/>
-                        <DataGridTextColumn Header="Number" Binding="{Binding roomNumber, Mode=OneWay}" Width="Auto"/>
-                        <DataGridTextColumn Header="ID" Binding="{Binding roomId, Mode=OneWay}" Width="Auto"/>
-                        <DataGridCheckBoxColumn Header="Unique" Binding="{Binding isUnique, Mode=OneWay}" Width="Auto"/>
-                        <DataGridTextColumn Header="Level" Binding="{Binding roomLevel, Mode=OneWay}" Width="*"/>
+                        <DataGridTextColumn Header="Name" Binding="{Binding RoomName,UpdateSourceTrigger=PropertyChanged}" Width="*"/>
+                        <DataGridTextColumn Header="Number" Binding="{Binding RoomNumber, UpdateSourceTrigger=PropertyChanged}" Width="Auto"/>
+                        <DataGridTextColumn Header="ID" Binding="{Binding RoomId, Mode=OneWay}" Width="Auto"/>
+                        <DataGridCheckBoxColumn Header="Unique" Binding="{Binding IsUnique,UpdateSourceTrigger=PropertyChanged}" Width="Auto"/>
+                        <DataGridTextColumn Header="Level" Binding="{Binding RoomLevel, Mode=OneWay}" Width="*"/>
+
+                        <!-- New columns -->
+                        <DataGridTextColumn Header="Ceiling Finish" Binding="{Binding CeilingFinish, UpdateSourceTrigger=PropertyChanged}" />
+
                     </DataGrid.Columns>
                 </DataGrid>
             </StackPanel>
